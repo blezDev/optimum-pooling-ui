@@ -1,29 +1,45 @@
 <div class="login-container">
   <div class="login-left">
-    <img src="https://img.freepik.com/free-vector/car-sharing-concept-illustration_114360-16901.jpg" alt=""  />
+    <img src="assets/car_high.jpg" alt=""/>
+    <!--<div class="login-banner">
+    </div>-->
     <h2>Turn your rides into trips.</h2>
     <p>Start for free and start your journey</p>
   </div>
+
   <div class="login-right">
-    <form>
-      <h2>Login to your Account</h2>
-      <p>See what's going on with your business</p>
-      <button class="google-login">Continue with Google</button>
-      <div class="divider">or</div>
-      <div class="input-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="mail@xyz.com" />
-      </div>
-      <div class="input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="********" />
-      </div>
-      <div class="remember-forgot">
-        <label><input type="checkbox" /> Remember me</label>
-        <a href="#">Forgot Password?</a>
-      </div>
-      <button type="submit" class="login-btn">Login</button>
-      <p>Not Registered Yet? <a href="#">Create an account</a></p>
-    </form>
+
+
+    <ng-container *ngIf="isSignUpMode; else loginTemplate">
+      <app-sign-up @fadeSlideInOut></app-sign-up>
+    </ng-container>
+    <ng-template #loginTemplate>
+      <form @fadeSlideInOut>
+        <h2 class="divider">Login to your Account</h2>
+        <!--<p>See what's going on with your business</p>-->
+        <button class="google-login">
+          <img src="assets/google_png.png"
+               style="width: 25px; height: 25px; vertical-align: middle; margin-right: 8px; margin-bottom: 4px" alt="">
+          Continue with Google
+
+        </button>
+        <div class="divider">or</div>
+
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="xyz@gamil.com"/>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="********"/>
+        </div>
+        <div class="remember-forgot">
+          <label><input type="checkbox"/> Remember me</label>
+          <a href="#">Forgot Password?</a>
+        </div>
+        <button type="submit" (click)="loginButton()" class="login-btn">Login</button>
+        <p>Not Registered Yet? <a id="sign-up-button" (click)="toggleMode()">Create an account</a></p>
+      </form>
+    </ng-template>
   </div>
 </div>

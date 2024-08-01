@@ -1,15 +1,16 @@
-.login-container {
-  display: flex;
-  width: 100%;
-  height: 100vh;
-}
 
-.login-left, .login-right {
+.signup-form {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-radius: 8px;
+
+
+  padding: 10px;
+  margin: 0 auto; /* Center the form horizontally */
+  width: 400px;
 }
 
 /*  .login-banner{
@@ -26,48 +27,22 @@
   margin-bottom: 20px;
   flex-grow: 1;
 }*/
-.login-left {
-  background-color: white; /* Pale pink color similar to the image */
-  text-align: center;
-  padding: 5px;
-  box-shadow: revert;
-  border-radius: 10px;
-  border-color: antiquewhite;
-}
 
-.login-left img {
-  display: block;
-  height: auto;
-  margin: auto;
-
-  max-width: 100%;
-  flex-grow: 1;
-}
-
-.login-left h2 {
-  font-size: 24px;
-  color: #8a2b5e; /* Darker pink/purple color */
-}
-
-.login-left p {
-  color: #8a2b5e;
-  padding-bottom: 30px;
-}
-
-.login-right {
+/*
+.signup-form {
   background-color: #ffffff;
   padding: 40px;
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
   flex: 0.7;
-
 }
+*/
 
-.login-right h2 {
+.signup-form h2 {
   margin-bottom: 10px;
   color: #6d2e57; /* Dark purple color */
 }
 
-.login-right p {
+.signup-form p {
   color: #999;
 }
 
@@ -105,6 +80,7 @@
 
 .input-group {
   margin-bottom: 25px;
+
 }
 
 .input-group label {
