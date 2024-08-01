@@ -1,0 +1,89 @@
+.login-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+  }
+  .login-left, .login-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .login-left {
+    background-color: #f7e2d4; /* Pale pink color similar to the image */
+    text-align: center;
+    padding: 20px;
+  }
+  .login-left img {
+    width: auto;
+    height: auto;
+    margin-bottom: 20px;
+    scale: 100%;
+  }
+  .login-left h2 {
+    font-size: 24px;
+    color: #8a2b5e; /* Darker pink/purple color */
+  }
+  .login-left p {
+    color: #8a2b5e;
+  }
+  .login-right {
+    background-color: #ffffff;
+    padding: 40px;
+    box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  .login-right h2 {
+    margin-bottom: 10px;
+    color: #6d2e57; /* Dark purple color */
+  }
+  .login-right p {
+    color: #999;
+  }
+  .google-login {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .divider {
+    text-align: center;
+    margin: 20px 0;
+    color: #ccc;
+  }
+  .input-group {
+    margin-bottom: 20px;
+  }
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #6d2e57;
+  }
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #6d2e57;
+  }
+  .login-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #6d2e57;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .login-btn:hover {
+    background-color: #8a2b5e;
+  }
