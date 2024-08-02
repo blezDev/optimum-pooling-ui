@@ -12,13 +12,15 @@ import { VerificationComponent } from './verification/verification.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignUpComponent,
     VerificationComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

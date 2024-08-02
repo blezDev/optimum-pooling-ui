@@ -11,7 +11,9 @@
 
 
     <ng-container *ngIf="isSignUpMode; else loginTemplate">
-      <app-sign-up @fadeSlideInOut></app-sign-up>
+      <!-- <app-sign-up @fadeSlideInOut></app-sign-up> -->
+      <!-- <app-forget-password @fadeSlideInOut></app-forget-password> -->
+      <app-change-password @fadeSlideInOut></app-change-password>
     </ng-container>
     <ng-template #loginTemplate>
       <form @fadeSlideInOut>
