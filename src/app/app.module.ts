@@ -14,6 +14,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { HomeComponent } from './home/home.component';
+import { PublishComponent } from './publish/publish.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { HomeComponent } from './home/home.component';
     VerificationComponent,
     ForgetPasswordComponent,
     ChangePasswordComponent,
-    HomeComponent
+    HomeComponent,
+    PublishComponent
   ],
   imports: [
     BrowserModule,
