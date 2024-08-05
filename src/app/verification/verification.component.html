@@ -3,16 +3,12 @@
   <p>Please enter the verification code sent to your email</p>
 
   <form (ngSubmit)="onSubmit()">
-    <div class="otp-inputs">
-      <input type="text" maxlength="1" [(ngModel)]="otp[0]" name="otp1" class="otp-input" />
-      <input type="text" maxlength="1" [(ngModel)]="otp[1]" name="otp2" class="otp-input" />
-      <input type="text" maxlength="1" [(ngModel)]="otp[2]" name="otp3" class="otp-input" />
-      <input type="text" maxlength="1" [(ngModel)]="otp[3]" name="otp4" class="otp-input" />
-      <input type="text" maxlength="1" [(ngModel)]="otp[4]" name="otp5" class="otp-input" />
-      <input type="text" maxlength="1" [(ngModel)]="otp[5]" name="otp6" class="otp-input" />
-    </div>
+    <ngx-otp-input
+      [options]="otpOptions"
+      class="otp-inputs"
+    ></ngx-otp-input>
     <button type="submit" class="verify-btn">Verify</button>
   </form>
   <br>
-  <p>If you did not receive a code, <a href="#" (click)="resendCode()">Resend Code</a></p>
+  <p>If you did not receive a code, <a href="javascript:void(0);" (click)="resendCode()">Resend Code</a></p>
 </div>

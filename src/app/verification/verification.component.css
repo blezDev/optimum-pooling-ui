@@ -22,21 +22,28 @@
 
 .otp-inputs {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 30px;
+  text-align: center;
+  border-radius: 4px;
+  transition: border-color 0.2s, box-shadow 0.2s; /* Smooth transitions for interaction */
 }
 
+
 .otp-input {
-  width: 45px;
+  width: 45px; /* Adjust to ensure equal spacing */
   height: 55px;
   font-size: 24px;
   text-align: center;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc; /* Thicker border for better visibility */
   border-radius: 4px;
+  margin: 0 5px;
+  transition: border-color 0.2s, box-shadow 0.2s; /* Smooth transitions for interaction */
 }
 
 .otp-input:focus {
   border-color: #6d2e57;
+  box-shadow: 0 0 5px rgba(109, 46, 87, 0.5); /* Soft glow for focus */
   outline: none;
 }
 

@@ -10,38 +10,49 @@
   <div class="login-right">
 
 
-    <ng-container *ngIf="isSignUpMode; else loginTemplate">
-      <!-- <app-sign-up @fadeSlideInOut></app-sign-up> -->
+   <ng-container [ngSwitch]="uiState" >
+
       <!-- <app-forget-password @fadeSlideInOut></app-forget-password> -->
-      <app-change-password @fadeSlideInOut></app-change-password>
+      <div *ngSwitchCase="UIState.Login">
+        <form @fadeSlideInOut  [formGroup]="loginForm">
+          <h2 class="divider">Login to your Account</h2>
+          <!--<p>See what's going on with your business</p>-->
+          <button class="google-login">
+            <img ngSrc="assets/google_png.png" width="512" height="512"
+                 style="width: 25px; height: 25px; vertical-align: middle; margin-right: 8px; margin-bottom: 4px" alt="">
+            Continue with Google
+
+          </button>
+          <div class="divider">or</div>
+
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email" placeholder="xyz@gamil.com" />
+
+          </div>
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="********" formControlName="password" />
+          </div>
+          <div class="remember-forgot">
+            <label><input type="checkbox"/> Remember me</label>
+            <a (click)="toggleMode(UIState.ForgetPassword)" href="javascript:void(0);">Forgot Password?</a>
+          </div>
+          <button type="submit" (click)="onSubmit()"   class="login-btn">Login</button>
+          <p>Not Registered Yet? <a id="sign-up-button" style="cursor: pointer;" (click)="toggleMode(UIState.Signup)">Create an account</a></p>
+        </form>
+      </div>
+      <div *ngSwitchCase="UIState.Signup">
+         <app-sign-up @fadeSlideInOut></app-sign-up>
+      </div>
+      <div *ngSwitchCase="UIState.ChangePassword">
+        <app-change-password @fadeSlideInOut></app-change-password>
+      </div>
+      <div *ngSwitchCase="UIState.ForgetPassword">
+        <app-forget-password @fadeSlideInOut></app-forget-password>
+      </div>
+
     </ng-container>
-    <ng-template #loginTemplate>
-      <form @fadeSlideInOut>
-        <h2 class="divider">Login to your Account</h2>
-        <!--<p>See what's going on with your business</p>-->
-        <button class="google-login">
-          <img src="assets/google_png.png"
-               style="width: 25px; height: 25px; vertical-align: middle; margin-right: 8px; margin-bottom: 4px" alt="">
-          Continue with Google
 
-        </button>
-        <div class="divider">or</div>
-
-        <div class="input-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="xyz@gamil.com"/>
-        </div>
-        <div class="input-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" placeholder="********"/>
-        </div>
-        <div class="remember-forgot">
-          <label><input type="checkbox"/> Remember me</label>
-          <a href="#">Forgot Password?</a>
-        </div>
-        <button type="submit" (click)="loginButton()" class="login-btn">Login</button>
-        <p>Not Registered Yet? <a id="sign-up-button" style="cursor: pointer;" (click)="toggleMode()">Create an account</a></p>
-      </form>
-    </ng-template>
   </div>
 </div>

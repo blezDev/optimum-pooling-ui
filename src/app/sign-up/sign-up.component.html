@@ -1,4 +1,4 @@
-<div class="signup-form">
+<form class="signup-form" [formGroup]="signup">
   <h2>Create an Account</h2>
   <p>Join us to start your journey</p>
   <button class="google-login">
@@ -7,25 +7,25 @@
     Continue with Google</button>
   <div class="divider">or</div>
   <div class="input-group">
-    <input type="text" id="first-name" placeholder="First Name" />
+    <input type="text" id="first-name" placeholder="First Name" formControlName="firstName" />
   </div>
   <div class="input-group">
 
-    <input type="text" id="last-name" placeholder="Last Name" />
+    <input type="text" id="last-name" placeholder="Last Name" formControlName="lastName" />
   </div>
   <div class="input-group">
 
-    <input type="email" id="email" placeholder="xyz@gmail.com" />
+    <input type="email" id="email" placeholder="xyz@gmail.com" formControlName="email" />
   </div>
   <div class="input-group">
 
-    <input type="password" id="password" placeholder="********" />
+    <input type="password" id="password" placeholder="********" formControlName="password" />
   </div>
   <div class="input-group">
 
-    <input type="tel"  id="phone-number" placeholder="Phone Number" />
+    <input type="tel"  id="phone-number" placeholder="Phone Number" formControlName="phoneNumber" />
   </div>
-  <button type="submit" class="login-btn">Sign Up</button>
-  <p>Already have an account? <a (click)="toggleToLogin()" style="cursor: pointer;" href="javascript:void(0);" >Login here</a></p>
+  <button type="submit" (click)="onSubmit()" class="login-btn">Sign Up</button>
+  <p>Already have an account? <a (click)="toggleToLogin(UIState.Login)" style="cursor: pointer;" href="javascript:void(0);" >Login here</a></p>
 
-</div>
+</form>

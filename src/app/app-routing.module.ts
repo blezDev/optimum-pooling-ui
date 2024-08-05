@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'verify', component: VerificationComponent },
   { path: 'home', component: HomeComponent },
   { path: 'publish', component: PublishComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
 

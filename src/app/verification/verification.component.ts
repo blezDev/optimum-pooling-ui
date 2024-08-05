@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {NgxOtpInputComponent, NgxOtpInputComponentOptions, NgxOtpStatus} from 'ngx-otp-input';
 
 @Component({
   selector: 'app-verification',
@@ -6,16 +7,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./verification.component.css']
 })
 export class VerificationComponent {
-  otp: string[] = ['', '', '', '', '', ''];
+  otp: string = ''; // Single string for OTP
 
-  onSubmit() {
-    const otpCode = this.otp.join('');
-    console.log('Entered OTP:', otpCode);
-    // You can add logic here to send the OTP code to your backend for verification.
+  otpOptions: NgxOtpInputComponentOptions = {
+    otpLength: 6,
+    autoFocus:true,
+    autoBlur:true,
+    inputMode: 'numeric',
+    showBlinkingCursor:true
+  };
+
+  status = NgxOtpStatus;
+
+  onSubmit(): void {
+    // Handle form submission
+
   }
 
-  resendCode() {
-    console.log('Resend code clicked');
-    // Logic to resend the OTP code can be added here.
+  resendCode(): void {
+    // Handle resend code logic
+    console.log('Resend code');
   }
 }
+
