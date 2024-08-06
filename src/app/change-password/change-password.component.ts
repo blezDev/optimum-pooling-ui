@@ -46,7 +46,7 @@ export class ChangePasswordComponent implements OnInit {
       if(this.changePasswordForm.value.newPassword == this.changePasswordForm.value.confirmPassword){
         this.apiService.ChangePassword(this.email?? "msaikrishna824@gmail.com",newPassword!!).subscribe(res => {
           if(res instanceof Success){
-            
+            this.showMessage(res.data ?? "Successfully changed password");
             this.router.navigateByUrl('/login',{replaceUrl: true});
           }
         })
