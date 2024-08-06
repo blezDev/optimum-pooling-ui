@@ -34,7 +34,7 @@ import {Router} from "@angular/router";
 export class LoginComponent {
 
   uiState: UIState = UIState.Login;
-
+  isLoading :boolean = false;
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required])
@@ -44,15 +44,18 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
+      this.isLoading = true;
 
       const {email, password} = this.loginForm.value;
       this.apiService.LoginEvent(email!!, password!!).subscribe(result => {
         this.state = result;
         if (result instanceof Success) {
+          this.isLoading = false;
           console.log(result)
           this.showMessage(result.data ?? "Successfully logged in");
           this.router.navigateByUrl('/home',{replaceUrl: true});
         } else {
+          this.isLoading = false;
           console.log(result)
           this.showMessage(result.message ?? "Failed to log in");
         }

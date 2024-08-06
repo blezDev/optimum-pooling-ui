@@ -16,7 +16,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
   styleUrls: ['./verification.component.css']
 })
 export class VerificationComponent {
-
+  isLoading :boolean = false;
   otpOptions: NgxOtpInputComponentOptions = {
     otpLength: 6,
     autoFocus:true,
@@ -47,10 +47,13 @@ export class VerificationComponent {
     if (val.length <6) {
       this.showMessage("Please enter complete OTP");
     }{
+      this.isLoading = true;
     this.apiService.VerifyOTPEvent(this.email,val).subscribe(result=>{
       if (result instanceof Success) {
+        this.isLoading = false;
         this.dialogRef.close(true);
       }else{
+        this.isLoading = false;
         this.showMessage(result.message ?? "Error in OTP!!");
       }
       });
@@ -59,7 +62,7 @@ export class VerificationComponent {
 
   }
 
-  
+
 
   showMessage(message: string) {
     this.snackBar.open(message, 'Close', {
@@ -69,11 +72,14 @@ export class VerificationComponent {
 
 
   resendCode(): void {
+    this.isLoading = true;
     // Handle resend code logic
     this.apiService.OTPEvent(this.email).subscribe(result => {
       if (result instanceof Success) {
+        this.isLoading = false;
         this.showMessage(result.data ?? "OTP has sent to your email");
       } else {
+        this.isLoading = false;
         this.showMessage(result.message ?? "Error in OTP!!");
       }
     })

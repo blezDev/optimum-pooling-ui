@@ -16,12 +16,12 @@ import { VerificationComponent } from '../verification/verification.component';
 })
 export class ForgetPasswordComponent {
     uiState: UIState = UIState.Login;
-
+  isLoading :boolean = false;
     forgotPasswordForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
     })
     state: ResultState<string> | null = null;
-    
+
 
 
 
@@ -38,11 +38,14 @@ export class ForgetPasswordComponent {
     onSubmit(){
 
       if (this.forgotPasswordForm.valid) {
+        this.isLoading = true;
         const {email} = this.forgotPasswordForm.value;
         this.apiService.OTPEvent(email!!).subscribe(result => {
           if (result instanceof Success) {
+            this.isLoading = false;
             this.VerifyScreen(email!!);
           } else {
+            this.isLoading = false;
             this.showMessage(result.message ?? "Error in OTP!!");
           }
         })
@@ -58,8 +61,8 @@ export class ForgetPasswordComponent {
         // You can also pass data to the dialog if needed
         data: {email: email} // Example data
       });
-  
-     
+
+
       dialogRef.afterClosed().subscribe((isVerified: boolean =false) => {
         if (isVerified) {
           this.router.navigateByUrl('/change-password',{replaceUrl: true,state: { email: email }});
@@ -68,7 +71,7 @@ export class ForgetPasswordComponent {
           this.showMessage('OTP verification failed or was canceled');
           // Handle failure or cancellation
         }
-  
+
       });
     }
 

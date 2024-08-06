@@ -19,6 +19,7 @@ import {NgOptimizedImage} from "@angular/common";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {HttpClientModule} from "@angular/common/http";
 import {NgxOtpInputComponent} from "ngx-otp-input";
+import {LoadingComponent} from "./shared/loading/loading.component";
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {NgxOtpInputComponent} from "ngx-otp-input";
     MatSnackBarModule,
     HttpClientModule,
     NgxOtpInputComponent,
-    
+    LoadingComponent,
+
 
   ],
   providers: [],

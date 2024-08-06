@@ -20,11 +20,11 @@ export class SignUpComponent {
               private snackBar: MatSnackBar,
               private apiService: ApiServiceService,
               private router: Router,
-              ) {
+  ) {
 
   }
 
-
+  isLoading: boolean = false;
   signup = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
@@ -40,13 +40,16 @@ export class SignUpComponent {
 
   onSubmit() {
     if (this.signup.valid) {
+      this.isLoading = true;
       const {firstName, lastName, phoneNumber, email, password} = this.signup.value;
       this.apiService.OTPEvent(email!!).subscribe(result => {
         if (result instanceof Success) {
+          this.isLoading = false;
           this.VerifyScreen(email!!);
 
 
         } else {
+          this.isLoading = false;
           this.showMessage(result.message ?? "Error in OTP!!");
         }
       })
@@ -72,14 +75,14 @@ export class SignUpComponent {
     });
 
     const {firstName, lastName, phoneNumber, password} = this.signup.value;
-    dialogRef.afterClosed().subscribe((isVerified: boolean =false) => {
+    dialogRef.afterClosed().subscribe((isVerified: boolean = false) => {
       if (isVerified) {
-        this.apiService.SignUpEvent(firstName!!,lastName!!,phoneNumber!!, email!!, password!!).subscribe(result => {
+        this.apiService.SignUpEvent(firstName!!, lastName!!, phoneNumber!!, email!!, password!!).subscribe(result => {
           this.state = result;
           if (result instanceof Success) {
             console.log(result)
             this.showMessage(result.data ?? "Successfully sign up");
-            this.router.navigateByUrl('/home',{replaceUrl: true});
+            this.router.navigateByUrl('/home', {replaceUrl: true});
           } else {
             console.log(result)
             this.showMessage(result.message ?? "Failed to sign in");
