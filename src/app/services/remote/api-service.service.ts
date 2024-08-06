@@ -56,4 +56,17 @@ export class ApiServiceService {
     )
   }
 
+  ChangePassword(email : string, password : string): Observable<ResultState<string>> {
+    const logUrl = `${this.configService.getBaseUrl()}/auth/changepassword}`;
+    return this.http.post<ResponseModel>(logUrl,{ email : email, password : password}).pipe(
+      map(response => new Success<string>( response.message || `User Password Changed`)),
+      catchError((error: HttpErrorResponse) => {
+        const message = error.error?.message || error.message || 'An error occurred';
+        return of(new Error<string>(message));
+      })
+    )
+  }
+
+
+
 }

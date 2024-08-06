@@ -59,6 +59,7 @@ export class VerificationComponent {
 
   }
 
+  
 
   showMessage(message: string) {
     this.snackBar.open(message, 'Close', {
@@ -69,7 +70,13 @@ export class VerificationComponent {
 
   resendCode(): void {
     // Handle resend code logic
-    console.log('Resend code');
+    this.apiService.OTPEvent(this.email).subscribe(result => {
+      if (result instanceof Success) {
+        this.showMessage(result.data ?? "OTP has sent to your email");
+      } else {
+        this.showMessage(result.message ?? "Error in OTP!!");
+      }
+    })
   }
 
 

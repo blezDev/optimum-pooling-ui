@@ -20,7 +20,7 @@ export class SignUpComponent {
               private snackBar: MatSnackBar,
               private apiService: ApiServiceService,
               private router: Router,
-              @Inject(MAT_DIALOG_DATA) public data: { email: string }) {
+              ) {
 
   }
 
@@ -72,7 +72,7 @@ export class SignUpComponent {
     });
 
     const {firstName, lastName, phoneNumber, password} = this.signup.value;
-    dialogRef.afterClosed().subscribe((isVerified: boolean) => {
+    dialogRef.afterClosed().subscribe((isVerified: boolean =false) => {
       if (isVerified) {
         this.apiService.SignUpEvent(firstName!!,lastName!!,phoneNumber!!, email!!, password!!).subscribe(result => {
           this.state = result;
