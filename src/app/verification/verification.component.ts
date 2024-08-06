@@ -1,5 +1,14 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Inject, Input, Output, SimpleChanges} from '@angular/core';
 import {NgxOtpInputComponent, NgxOtpInputComponentOptions, NgxOtpStatus} from 'ngx-otp-input';
+import {FormArray, FormControl, Validators} from "@angular/forms";
+import {defaultOptions} from "ngx-otp-input/lib/default.config";
+import {OtpValueChangeEvent} from "ngx-otp-input/lib/directives/inputNavigations.directive";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {ApiServiceService} from "../services/remote/api-service.service";
+import {Router} from "@angular/router";
+import {map} from "rxjs";
+import {Success} from "../shared/ResultState";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-verification',
@@ -7,7 +16,6 @@ import {NgxOtpInputComponent, NgxOtpInputComponentOptions, NgxOtpStatus} from 'n
   styleUrls: ['./verification.component.css']
 })
 export class VerificationComponent {
-  otp: string = ''; // Single string for OTP
 
   otpOptions: NgxOtpInputComponentOptions = {
     otpLength: 6,
@@ -17,16 +25,52 @@ export class VerificationComponent {
     showBlinkingCursor:true
   };
 
+  constructor(  private snackBar: MatSnackBar,
+                private apiService: ApiServiceService,
+                private router: Router,
+                @Inject(MAT_DIALOG_DATA) public data: { email: string },
+                public dialogRef: MatDialogRef<VerificationComponent>){
+    this.email = data.email;
+  }
+
+  otp: string[] = []; // or string, based on your usage
+  email: string;
   status = NgxOtpStatus;
 
-  onSubmit(): void {
-    // Handle form submission
+  onOtpChange(otpValues: string[]): void {
+    this.otp = otpValues;
 
   }
+
+  onSubmit(): void {
+    const val = this.otp.join('');
+    if (val.length <6) {
+      this.showMessage("Please enter complete OTP");
+    }{
+    this.apiService.VerifyOTPEvent(this.email,val).subscribe(result=>{
+      if (result instanceof Success) {
+        this.dialogRef.close(true);
+      }else{
+        this.showMessage(result.message ?? "Error in OTP!!");
+      }
+      });
+    }
+    // Handle form submission logic here
+
+  }
+
+
+  showMessage(message: string) {
+    this.snackBar.open(message, 'Close', {
+      duration: 3000,
+    });
+  }
+
 
   resendCode(): void {
     // Handle resend code logic
     console.log('Resend code');
   }
-}
 
+
+}

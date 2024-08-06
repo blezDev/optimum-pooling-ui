@@ -1,8 +1,8 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, Inject, ViewChild} from '@angular/core';
 import {ToggleModeService} from "../services/toggle-mode.service";
 import {UIState} from "../shared/UIState";
 import {VerificationComponent} from "../verification/verification.component";
-import {MatDialog} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ResultState, Success} from "../shared/ResultState";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -19,7 +19,9 @@ export class SignUpComponent {
               public dialog: MatDialog,
               private snackBar: MatSnackBar,
               private apiService: ApiServiceService,
-              private router: Router,) {
+              private router: Router,
+              @Inject(MAT_DIALOG_DATA) public data: { email: string }) {
+
   }
 
 
@@ -39,16 +41,16 @@ export class SignUpComponent {
   onSubmit() {
     if (this.signup.valid) {
       const {firstName, lastName, phoneNumber, email, password} = this.signup.value;
-/*      this.apiService.OTPEvent(email!!).subscribe(result =>{
+      this.apiService.OTPEvent(email!!).subscribe(result => {
         if (result instanceof Success) {
           this.VerifyScreen(email!!);
 
 
-        }else{
+        } else {
           this.showMessage(result.message ?? "Error in OTP!!");
         }
-      })*/
-      this.VerifyScreen(email!!);
+      })
+
     } else {
       this.showMessage("Please fill the required fields.");
     }
@@ -61,7 +63,7 @@ export class SignUpComponent {
     });
   }
 
-  VerifyScreen(email: string)  {
+  VerifyScreen(email: string) {
     // Open the OTP Verification Dialog
     const dialogRef = this.dialog.open(VerificationComponent, {
       width: 'auto', // Adjust the width as needed
@@ -69,9 +71,24 @@ export class SignUpComponent {
       data: {email: email} // Example data
     });
 
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    const {firstName, lastName, phoneNumber, password} = this.signup.value;
+    dialogRef.afterClosed().subscribe((isVerified: boolean) => {
+      if (isVerified) {
+        this.apiService.SignUpEvent(firstName!!,lastName!!,phoneNumber!!, email!!, password!!).subscribe(result => {
+          this.state = result;
+          if (result instanceof Success) {
+            console.log(result)
+            this.showMessage(result.data ?? "Successfully sign up");
+            this.router.navigateByUrl('/home',{replaceUrl: true});
+          } else {
+            console.log(result)
+            this.showMessage(result.message ?? "Failed to sign in");
+          }
+        })
+      } else {
+        console.log('OTP verification failed or was canceled');
+        // Handle failure or cancellation
+      }
 
     });
   }

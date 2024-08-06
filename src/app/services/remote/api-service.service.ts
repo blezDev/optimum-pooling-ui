@@ -45,6 +45,15 @@ export class ApiServiceService {
     )
   }
 
-
+  SignUpEvent(firstName : string,lastName : string,email : string,password : string,phoneNumber : string): Observable<ResultState<string>> {
+    const logUrl = `${this.configService.getBaseUrl()}/auth/signup}`;
+    return this.http.post<ResponseModel>(logUrl,{firstName : firstName,lastName : lastName, email : email, password : password, phoneNumber : phoneNumber}).pipe(
+      map(response => new Success<string>( response.message || `User Verified`)),
+      catchError((error: HttpErrorResponse) => {
+        const message = error.error?.message || error.message || 'An error occurred';
+        return of(new Error<string>(message));
+      })
+    )
+  }
 
 }

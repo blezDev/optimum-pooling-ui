@@ -6,6 +6,7 @@
     <ngx-otp-input
       [options]="otpOptions"
       class="otp-inputs"
+      (otpChange)="onOtpChange($event)"
     ></ngx-otp-input>
     <button type="submit" class="verify-btn">Verify</button>
   </form>
