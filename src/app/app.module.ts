@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
-import { MatRippleModule } from '@angular/material/core';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { VerificationComponent } from './verification/verification.component';
 import {MatButtonModule} from "@angular/material/button";
@@ -20,6 +20,9 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {HttpClientModule} from "@angular/common/http";
 import {NgxOtpInputComponent} from "ngx-otp-input";
 import {LoadingComponent} from "./shared/loading/loading.component";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatInputModule} from "@angular/material/input";
 
 
 @NgModule({
@@ -48,7 +51,10 @@ import {LoadingComponent} from "./shared/loading/loading.component";
     HttpClientModule,
     NgxOtpInputComponent,
     LoadingComponent,
-
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatInputModule
 
   ],
   providers: [],

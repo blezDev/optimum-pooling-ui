@@ -48,7 +48,7 @@
     border-radius: 50%;
     margin-right: 10px;
     box-shadow: 0 2px 4px #333333;
- 
+
   }
   /* Main banner styles */
   .main-banner {
@@ -84,11 +84,15 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-  
+
   }
+.search-bar input, .search-bar .custom-input{
+  flex-grow: 1;
+}
+
   .search-bar button:hover {
     background-color: #8a2b5e; /* Slightly darker shade on hover */
-    
+
   }
   /* Info section styles */
   .info-section {
@@ -115,3 +119,64 @@
     font-size: 14px;
     line-height: 1.6;
   }
+
+.custom-input{
+  padding: 10px;
+  margin: 0 5px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  width: 200px;
+  font-size: 14px;
+  line-height: 1.5;
+
+}
+.mat-form-field-underline {
+  display: none;
+}
+.mat-form-field {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/*
+!* Styles for all form fields including Material form fields *!
+.input-group .mat-form-field {
+  width: 100%; !* Adjust width as needed or use flex styles *!
+}
+
+!* Specific styles to override Material inputs to match other inputs *!
+.mat-form-field {
+  font-size: 16px; !* Match the font size of your other inputs *!
+  line-height: 1.5; !* Adjust line height for better visual alignment *!
+}
+
+.mat-form-field .mat-input-element {
+  padding: 8px; !* Padding inside the input *!
+  border: 1px solid #ccc; !* Border color to match other inputs *!
+  border-radius: 4px; !* Border radius to match other inputs *!
+}
+
+!* Remove underline from mat-form-field *!
+.mat-form-field-underline {
+  display: none;
+}
+
+!* Adjust the mat-form-field wrapper appearance *!
+.mat-form-field-wrapper {
+  padding-bottom: 0.25em; !* Reduce space below the input *!
+}
+
+!* Adjustments for the label to move appropriately *!
+.mat-form-field-label {
+  transform: translate(0, 1.75em) scale(1); !* Adjust label initial position *!
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+  transform: translate(0, 0.85em) scale(0.75);
+}
+
+!* Style adjustments for mat-form-field when focused *!
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #673ab7; !* Color when the field is focused *!
+}
+*/
