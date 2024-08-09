@@ -8,6 +8,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {ApiServiceService} from "../services/remote/api-service.service";
 import {ResultState, Success} from "../shared/ResultState";
 import {Router} from "@angular/router";
+import { CookieService } from 'ngx-cookie-service';
+import { AuthResponseModel } from '../shared/ResponseModel';
 
 @Component({
   selector: 'app-login',
@@ -40,7 +42,7 @@ export class LoginComponent {
     password: new FormControl('', [Validators.required])
   });
 
-  state: ResultState<string> | null = null;
+  state: ResultState<AuthResponseModel> | null = null;
 
   onSubmit() {
     if (this.loginForm.valid) {
@@ -51,8 +53,14 @@ export class LoginComponent {
         this.state = result;
         if (result instanceof Success) {
           this.isLoading = false;
-          console.log(result)
-          this.showMessage(result.data ?? "Successfully logged in");
+          console.log(result.data)
+          this.setCookies("email", result.data?.email);
+          this.setCookies("firstName", result.data?.firstName);
+          this.setCookies("lastName", result.data?.lastName);
+          this.setCookies("userId", result.data?.userId);
+          this.setCookies("userId", result.data?.userId);
+          console.log(this.getCookies("email"))
+          this.showMessage(result.data?.message ?? "Successfully logged in");
           this.router.navigateByUrl('/home',{replaceUrl: true});
         } else {
           this.isLoading = false;
@@ -72,10 +80,18 @@ export class LoginComponent {
               public dialog: MatDialog,
               private snackBar: MatSnackBar,
               private apiService: ApiServiceService,
-              private router: Router, ) {
+              private router: Router,
+              private cookies: CookieService) {
     this.toggleModeService.isSignUpMode.subscribe(mode => {
       this.uiState = mode;
     });
+  }
+
+  setCookies(key : string, value : string) {
+    this.cookies.set(key, value);
+  }
+  getCookies(key : string) {
+    return this.cookies.get(key);
   }
 
   showMessage(message: string) {

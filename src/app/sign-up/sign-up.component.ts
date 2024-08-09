@@ -82,7 +82,8 @@ export class SignUpComponent {
           if (result instanceof Success) {
             console.log(result)
             this.showMessage(result.data ?? "Successfully sign up");
-            this.router.navigateByUrl('/home', {replaceUrl: true});
+            this.toggleModeService.toggleMode(UIState.Login)
+          
           } else {
             console.log(result)
             this.showMessage(result.message ?? "Failed to sign in");

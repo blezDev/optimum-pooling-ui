@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ConfigService {
-  private baseURL: string = "http://localhost:8080";
+  private baseURL: string = "http://localhost:8081";
 
   getBaseUrl(){
     return this.baseURL;
