@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Ride } from 'src/app/Model/Ride';
+import { ConfigService } from '../configs/config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RideService {
 
-  private baseUrl = 'http://localhost:8091/ride';  
+  private baseUrl = `${this.configService.getBaseUrl()}/ride`;  
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private configService: ConfigService) { }
 
   // Method to get a ride by ID
   getRideById(id: number): Observable<Ride> {
