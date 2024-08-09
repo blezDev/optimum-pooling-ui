@@ -1,29 +1,43 @@
 <div class="offer-section">
-    <h2>Become a RideTribe driver and save on travel costs by sharing your ride with passengers.</h2>
-    <div class="offer-content">
-      <div class="offer-details">
-        <form>
-          <div class="radio-group">
-            <label>
-              <input type="radio" name="destination" value="London" checked>
-              London
-            </label>
-            <label>
-              <input type="radio" name="destination" value="Wroclaw">
-              Wroclaw
-            </label>
-          </div>
-          <div class="passenger-info">
-            <span>2 Passengers</span>
-          </div>
-          <div class="savings-info">
-            <p>Save up to <span class="highlight">£136</span> on your first ride.</p>
-          </div>
-          <button type="submit" class="publish-btn">Publish a ride</button>
-        </form>
-      </div>
-      <div class="offer-image">
-        <img src="assets/car-offer.png" alt="Car with passengers"> <!-- Replace with actual image path -->
-      </div>
+  <app-loading *ngIf="isLoading"></app-loading>
+  <h2>Become a RideTribe driver and save on travel costs by sharing your ride with passengers.</h2>
+  <div class="offer-content">
+    <div class="offer-details">
+      <form class="ride-form" (ngSubmit)="addRide()" [formGroup]="rideForm">
+        <div class="form-group">
+          <label for="ride-source">Ride Source:</label>
+          <input type="text" id="ride-source" name="rideSource" placeholder="Enter starting point" [(ngModel)]="ride.rideSource" formControlName="rideSource">
+        </div>
+        <div class="form-group">
+          <label for="ride-destination">Ride Destination:</label>
+          <input type="text" id="ride-destination" name="rideDestination" placeholder="Enter destination" [(ngModel)]="ride.rideDestination" formControlName="rideDestination">
+        </div>
+        <div class="form-group">
+          <label for="ride-date">Date:</label>
+          <input type="date" id="ride-date" name="rideDate" [(ngModel)]="ride.rideDate" formControlName="rideDate">
+        </div>
+        <div class="form-group">
+          <label for="ride-time">Time:</label>
+          <input type="time" id="ride-time" name="rideTime" [(ngModel)]="ride.rideTime" formControlName="rideTime">
+        </div>
+        <div class="form-group">
+          <label for="car-model">Car Model:</label>
+          <input type="text" id="car-model" name="carName" placeholder="Enter car model" [(ngModel)]="ride.carName" formControlName="carName">
+        </div>
+        <div class="form-group">
+          <label for="car-number">Car Number:</label>
+          <input type="text" id="car-number" name="carNum" placeholder="Enter car number" [(ngModel)]="ride.carNum" formControlName="carNum">
+        </div>
+        <div class="form-group">
+          <label for="no-of-passengers">Number of Passengers:</label>
+          <input type="number" id="no-of-passengers" name="availableSeats" placeholder="Enter number of passengers" [(ngModel)]="ride.availableSeats" min="1" max="8" formControlName="availableSeats">
+        </div>
+        <button type="submit" class="publish-btn">Publish a ride</button>
+      </form>
+    </div>
+    <div class="offer-image">
+      <img src="assets/roadtrip.png" alt="Car with passengers" style="height: 100%; width: 100%;">
     </div>
   </div>
+ 
+</div>
