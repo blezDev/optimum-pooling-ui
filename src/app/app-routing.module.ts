@@ -7,15 +7,17 @@ import { HomeComponent } from './home/home.component';
 import { PublishComponent } from './publish/publish.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { BillingComponent } from './billing/billing.component';
+import {authGuard} from "./guards/auth.guard";
+import {reverseAuthGuard} from "./guards/reverse-auth.guard";
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'sign-up', component: SignUpComponent },
-  { path: 'verify', component: VerificationComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'publish', component: PublishComponent },
-  {path : 'change-password', component : ChangePasswordComponent},
-  {path : 'bill', component : BillingComponent},
-  { path: '', redirectTo: 'login', pathMatch: 'full' }
+  { path: 'login', component: LoginComponent  ,canActivate : [reverseAuthGuard]},
+  { path: 'sign-up', component: SignUpComponent ,canActivate : [reverseAuthGuard]},
+  { path: 'verify', component: VerificationComponent ,canActivate : [reverseAuthGuard]},
+  { path: 'home', component: HomeComponent,canActivate : [authGuard] },
+  { path: 'publish', component: PublishComponent,canActivate : [authGuard] },
+  {path : 'change-password', component : ChangePasswordComponent,canActivate : [authGuard]},
+  {path : 'bill', component : BillingComponent,canActivate : [authGuard]},
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 
