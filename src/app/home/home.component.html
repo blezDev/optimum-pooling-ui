@@ -29,6 +29,24 @@
       </div>
     </div>
   </div>
+
+  <div class="trips-section">
+    <h2><strong>Date:</strong> August 15, 2024</h2>
+    <h1>Available Trips</h1>
+  
+    <div *ngFor="let trip of trips" class="trip-card">
+      <div class="trip-info">
+        <h3>{{ trip.departure }}</h3>
+        <p><strong>Duration:</strong> {{ trip.duration }}</p>
+        <h3>{{ trip.arrival }}</h3>      
+      </div>
+      <div class="trip-actions">
+        <button>Book Now</button>
+      </div>
+    </div>
+  </div>
+  
+
   <div class="info-section">
     <div class="info-item">
       <img src="assets/save_money.png" alt="Icon 1"> <!-- Replace with your actual icon -->

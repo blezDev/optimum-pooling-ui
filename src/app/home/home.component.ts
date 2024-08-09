@@ -12,4 +12,32 @@ export class HomeComponent {
     const today = new Date();
     this.minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
   }
+
+  trips = [
+    {
+      departure: '10:00 AM | NEW YORK',
+      duration: '4 hours',
+      arrival: '02:00 PM | TEXAS',
+    },
+    {
+      departure: '10:00 AM | PUNE',
+      duration: '4 hours',
+      arrival: '02:00 PM | MUMBAI',
+    },
+    {
+      departure: '10:00 AM | PUNE',
+      duration: '4 hours',
+      arrival: '02:00 PM | NASIK',
+    },
+    {
+      departure: '10:00 AM | MUMBAI',
+      duration: '4 hours',
+      arrival: '02:00 PM | THANE',
+    },
+    {
+      departure: '10:00 AM | LOS ANGELES',
+      duration: '4 hours',
+      arrival: '02:00 PM | CHICAGO',
+    }
+  ];
 }

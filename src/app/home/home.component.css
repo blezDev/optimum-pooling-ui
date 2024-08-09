@@ -1,126 +1,120 @@
 .header {
-    background-color: #ffffff; /* White background for the header */
-    border-bottom: 1px solid #e5e5e5; /* Light grey border to separate header */
-    padding: 10px 20px;
-  }
-  .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .logo {
-    display: flex;
-    align-items: center;
-  }
-  .logo img {
-    height: 40px;
-    margin-right: 10px;
-  }
-  .logo span {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333333; /* Dark text color */
-  }
-  .navigation a {
-    margin: 0 15px;
-    color: #6d2e57; /* Dark purple color for heading */
-    text-decoration: none;
-    font-size: 16px;
-  }
-  .navigation a:hover {
-    text-decoration: underline;
-  }
-  .user-actions {
-    display: flex;
-    align-items: center;
-  }
-  .user-actions a {
-    margin: 0 10px;
-    color: #6d2e57; /* Dark purple color for heading */
-    text-decoration: none;
-    font-size: 16px;
-  }
-  .user-actions a:hover {
-    text-decoration: underline;
-  }
-  .user-icon img {
-    height: 30px;
-    border-radius: 50%;
-    margin-right: 10px;
-    box-shadow: 0 2px 4px #333333;
-
-  }
-  /* Main banner styles */
-  .main-banner {
-    background-color: #f7f9fc; /* Light blue/grey background for banner */
-    padding: 40px 20px;
-    text-align: center;
-  }
-  .banner-content h1 {
-    font-size: 36px;
-    color: #333333; /* Dark text color for heading */
-    margin-bottom: 20px;
-  }
-  .search-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto;
-  }
-  .search-bar input {
-    padding: 10px;
-    margin: 0 5px;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    width: 200px;
-    font-size: 14px;
-  }
-  .search-bar button {
-    padding: 10px 20px;
-    background-color: #6d2e57; /* Button with the dark purple color */
-    color: #ffffff; /* White text color */
-
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-
-  }
-.search-bar input, .search-bar .custom-input{
+  background-color: #ffffff; /* White background for the header */
+  border-bottom: 1px solid #e5e5e5; /* Light grey border to separate header */
+  padding: 10px 20px;
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+.logo span {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333; /* Dark text color */
+}
+.navigation a {
+  margin: 0 15px;
+  color: #6d2e57; /* Dark purple color for heading */
+  text-decoration: none;
+  font-size: 16px;
+}
+.navigation a:hover {
+  text-decoration: underline;
+}
+.user-actions {
+  display: flex;
+  align-items: center;
+}
+.user-actions a {
+  margin: 0 10px;
+  color: #6d2e57; /* Dark purple color for heading */
+  text-decoration: none;
+  font-size: 16px;
+}
+.user-actions a:hover {
+  text-decoration: underline;
+}
+.user-icon img {
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+  box-shadow: 0 2px 4px #333333;
+}
+/* Main banner styles */
+.main-banner {
+  background-color: #f7f9fc; /* Light blue/grey background for banner */
+  padding: 40px 20px;
+  text-align: center;
+}
+.banner-content h1 {
+  font-size: 36px;
+  color: #333333; /* Dark text color for heading */
+  margin-bottom: 20px;
+}
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+}
+.search-bar input {
+  padding: 10px;
+  margin: 0 5px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  width: 200px;
+  font-size: 14px;
+}
+.search-bar button {
+  padding: 10px 20px;
+  background-color: #6d2e57; /* Button with the dark purple color */
+  color: #ffffff; /* White text color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.search-bar input, .search-bar .custom-input {
   flex-grow: 1;
 }
-
-  .search-bar button:hover {
-    background-color: #8a2b5e; /* Slightly darker shade on hover */
-
-  }
-  /* Info section styles */
-  .info-section {
-    display: flex;
-    justify-content: space-around;
-    padding: 40px 20px;
-    background-color: #ffffff; /* White background */
-    text-align: center;
-  }
-  .info-item {
-    max-width: 300px;
-  }
-  .info-item img {
-    height: 50px;
-    margin-bottom: 20px;
-  }
-  .info-item h3 {
-    font-size: 20px;
-    color: #333333; /* Dark text color */
-    margin-bottom: 10px;
-  }
-  .info-item p {
-    color: #666666; /* Grey text color for descriptions */
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-.custom-input{
+.search-bar button:hover {
+  background-color: #8a2b5e; /* Slightly darker shade on hover */
+}
+/* Info section styles */
+.info-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 20px;
+  background-color: #ffffff; /* White background */
+  text-align: center;
+}
+.info-item {
+  max-width: 300px;
+}
+.info-item img {
+  height: 50px;
+  margin-bottom: 20px;
+}
+.info-item h3 {
+  font-size: 20px;
+  color: #333333; /* Dark text color */
+  margin-bottom: 10px;
+}
+.info-item p {
+  color: #666666; /* Grey text color for descriptions */
+  font-size: 14px;
+  line-height: 1.6;
+}
+.custom-input {
   padding: 10px;
   margin: 0 5px;
   border: 1px solid #cccccc;
@@ -128,7 +122,6 @@
   width: 200px;
   font-size: 14px;
   line-height: 1.5;
-
 }
 .mat-form-field-underline {
   display: none;
@@ -137,46 +130,122 @@
   font-size: 16px;
   line-height: 1.5;
 }
-
-/*
-!* Styles for all form fields including Material form fields *!
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+/* General Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; /* Light grey background for contrast */
+  color: #333; /* Dark grey text for readability */
+}
+.trips-section {
+  max-width: 1200px; /* Limit width for large screens */
+  margin: 40px auto; /* Center the section */
+  padding: 20px; /* Padding around the section */
+  background-color: #ccc8c8; /* White background for the section */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+p.date {
+  font-weight: bold;
+  font-size: 40px;
+  margin-bottom: 10px; /* Space below the date */
+}
+h1 {
+  text-align: center; /* Center the heading */
+  margin-bottom: 30px; /* Space below the heading */
+  font-weight: 700; /* Bold font for the heading */
+  color: #090b0e; /* Blue color for the heading */
+}
+h2 {
+  text-align: left; /* Center the heading */
+  margin-bottom: 10px; /* Space below the heading */
+  font-weight: 700; /* Bold font for the heading */
+  color: #090b0e; /* Blue color for the heading */}
+/* Trip Card Styles */
+.trip-card {
+  display: flex; /* Use flexbox for horizontal layout */
+  justify-content: space-between; /* Space between trip info and button */
+  align-items: center; /* Align items vertically */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Padding inside cards */
+  margin-bottom: 20px; /* Space between cards */
+  background-color: #e0f7fa; /* Light blue background color for all cards */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for background color, transform, and box-shadow */
+  color: #0f0c0c; /* Dark text for visibility */
+}
+/* Hover effect for trip cards */
+.trip-card:hover {
+  background-color: #b2ebf2; /* Slightly darker blue for hover effect */
+  transform: scale(1.05); /* Enlarge the card on hover */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add a stronger shadow on hover */
+}
+/* Trip Info Styles */
+.trip-info {
+  flex: 1; /* Allow the trip info to grow and fill space */
+  text-align: center; /* Center align text */
+}
+.trip-info h3 {
+  margin: 0 0 5px; /* Space below heading */
+  font-weight: 700; /* Bold heading */
+}
+.trip-info p {
+  margin: 5px 0; /* Space between paragraphs */
+}
+/* Trip Actions Styles */
+.trip-actions {
+  text-align: center; /* Center align button */
+}
+.trip-actions p {
+  margin: 0; /* Remove margin for price */
+  font-size: 1.2em; /* Slightly larger font for price */
+}
+button {
+  background-color: #ffffff; /* White background for buttons */
+  color: black; /* Blue text on button */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners for buttons */
+  padding: 12px 20px; /* Padding for button */
+  font-size: 16px; /* Font size for button text */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+}
+button:hover {
+  background-color: #8a2b5e; /* Blue background on hover */
+  color: white; /* White text on hover */
+  transform: scale(1.05); /* Slight grow effect on hover */
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .trip-card {
+      flex-direction: column; /* Stack items vertically on small screens */
+      align-items: center; /* Center items */
+  }
+}
+/* Styles for all form fields including Material form fields */
 .input-group .mat-form-field {
-  width: 100%; !* Adjust width as needed or use flex styles *!
+  width: 100%; /* Adjust width as needed or use flex styles */
 }
-
-!* Specific styles to override Material inputs to match other inputs *!
 .mat-form-field {
-  font-size: 16px; !* Match the font size of your other inputs *!
-  line-height: 1.5; !* Adjust line height for better visual alignment *!
+  font-size: 16px; /* Match the font size of your other inputs */
+  line-height: 1.5; /* Adjust line height for better visual alignment */
 }
-
 .mat-form-field .mat-input-element {
-  padding: 8px; !* Padding inside the input *!
-  border: 1px solid #ccc; !* Border color to match other inputs *!
-  border-radius: 4px; !* Border radius to match other inputs *!
+  padding: 8px; /* Padding inside the input */
+  border: 1px solid #ccc; /* Border color to match other inputs */
+  border-radius: 4px; /* Border radius to match other inputs */
 }
-
-!* Remove underline from mat-form-field *!
 .mat-form-field-underline {
   display: none;
 }
-
-!* Adjust the mat-form-field wrapper appearance *!
 .mat-form-field-wrapper {
-  padding-bottom: 0.25em; !* Reduce space below the input *!
+  padding-bottom: 0.25em; /* Reduce space below the input */
 }
-
-!* Adjustments for the label to move appropriately *!
 .mat-form-field-label {
-  transform: translate(0, 1.75em) scale(1); !* Adjust label initial position *!
+  transform: translate(0, 1.75em) scale(1); /* Adjust label initial position */
 }
-
 .mat-form-field.mat-focused .mat-form-field-label {
   transform: translate(0, 0.85em) scale(0.75);
 }
-
-!* Style adjustments for mat-form-field when focused *!
-.mat-form-field.mat-focused .mat-form-field-ripple {
-  background-color: #673ab7; !* Color when the field is focused *!
-}
-*/
