@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {CookieService} from "ngx-cookie-service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -8,10 +10,29 @@ import { Component } from '@angular/core';
 export class HomeComponent {
   minDate = new Date();  // Ensures the date picker defaults to today's date or later
   passengerCount: string = "";
-  constructor() {
+  constructor(private cookieService: CookieService,private router: Router) {
     const today = new Date();
     this.minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
   }
+
+
+  showDropdown = false;
+  toggleDropdown(): void {
+    this.showDropdown = !this.showDropdown;
+  }
+
+  logout(): void {
+    // Clear cookies or local storage
+    this.cookieService.deleteAll();
+    // Possibly redirect user or refresh the authentication status
+    this.showDropdown = false;
+    this.router.navigate(['/login'],{replaceUrl : true});
+    // Redirect or perform additional cleanup
+  }
+
+
+
+
 
   trips = [
     {

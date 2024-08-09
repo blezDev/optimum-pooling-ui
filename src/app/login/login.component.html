@@ -35,7 +35,7 @@
             <input type="password" id="password" placeholder="********" formControlName="password" />
           </div>
           <div class="remember-forgot">
-            <label><input type="checkbox"/> Remember me</label>
+            <label style="visibility: hidden"><input type="checkbox"/> Remember me</label>
             <a (click)="toggleMode(UIState.ForgetPassword)" href="javascript:void(0);">Forgot Password?</a>
           </div>
           <button type="submit" (click)="onSubmit()"   class="login-btn">Login</button>

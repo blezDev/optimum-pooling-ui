@@ -28,7 +28,7 @@ export class SignUpComponent {
   signup = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
-    phoneNumber: new FormControl('', [
+    phoneNumber: new FormControl(null, [
       Validators.required,
       Validators.minLength(10),
       Validators.maxLength(10)
@@ -41,7 +41,7 @@ export class SignUpComponent {
   onSubmit() {
     if (this.signup.valid) {
       this.isLoading = true;
-      const {firstName, lastName, phoneNumber, email, password} = this.signup.value;
+      const {email} = this.signup.value;
       this.apiService.OTPEvent(email!!).subscribe(result => {
         if (result instanceof Success) {
           this.isLoading = false;
@@ -77,13 +77,13 @@ export class SignUpComponent {
     const {firstName, lastName, phoneNumber, password} = this.signup.value;
     dialogRef.afterClosed().subscribe((isVerified: boolean = false) => {
       if (isVerified) {
-        this.apiService.SignUpEvent(firstName!!, lastName!!, phoneNumber!!, email!!, password!!).subscribe(result => {
+        this.apiService.SignUpEvent(firstName, lastName, email, password,phoneNumber).subscribe(result => {
           this.state = result;
           if (result instanceof Success) {
             console.log(result)
             this.showMessage(result.data ?? "Successfully sign up");
             this.toggleModeService.toggleMode(UIState.Login)
-          
+
           } else {
             console.log(result)
             this.showMessage(result.message ?? "Failed to sign in");

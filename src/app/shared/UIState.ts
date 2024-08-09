@@ -3,5 +3,5 @@ export enum UIState {
   Signup,
   ForgetPassword,
   ChangePassword,
-  Loading
+
 }

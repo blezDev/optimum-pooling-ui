@@ -10,10 +10,13 @@ import {AuthResponseModel, ResponseModel} from "../../shared/ResponseModel";
 })
 export class ApiServiceService {
 
+
   constructor(private http: HttpClient,private configService: ConfigService) { }
 
+
+
   LoginEvent(email : string, password: string): Observable<ResultState<AuthResponseModel>> {
-    const logUrl = this.configService.getBaseUrl()+ "/auth/login";
+    const logUrl = this.configService.getBaseUrl()+ "/auth-service/auth/login";
     return this.http.post<AuthResponseModel>(logUrl,{email: email, password: password}).pipe(
       map(response => new Success<AuthResponseModel>(response)),
       catchError((error: HttpErrorResponse) => {
@@ -24,7 +27,7 @@ export class ApiServiceService {
   }
 
   OTPEvent(email : string): Observable<ResultState<string>> {
-    const logUrl = `${this.configService.getBaseUrl()}/auth/generateotp/${email}`;
+    const logUrl = `${this.configService.getBaseUrl()}/auth-service/auth/generateotp/${email}`;
     return this.http.post<ResponseModel>(logUrl,{}).pipe(
       map(response => new Success<string>( response.message || `OTP has sent to ${email}`)),
       catchError((error: HttpErrorResponse) => {
@@ -35,7 +38,7 @@ export class ApiServiceService {
   }
 
   VerifyOTPEvent(email : string,otp : string): Observable<ResultState<string>> {
-    const logUrl = `${this.configService.getBaseUrl()}/auth/verify/${email}`;
+    const logUrl = `${this.configService.getBaseUrl()}/auth-service/auth/verify/${email}`;
     return this.http.post<ResponseModel>(logUrl,{otp}).pipe(
       map(response => new Success<string>( response.message || `OTP has sent to ${email}`)),
       catchError((error: HttpErrorResponse) => {
@@ -46,7 +49,7 @@ export class ApiServiceService {
   }
 
   SignUpEvent(firstName : string,lastName : string,email : string,password : string,phoneNumber : string): Observable<ResultState<string>> {
-    const logUrl = `${this.configService.getBaseUrl()}/auth/signup`;
+    const logUrl = `${this.configService.getBaseUrl()}/auth-service/auth/signup`;
     return this.http.post<ResponseModel>(logUrl,{firstName : firstName,lastName : lastName, email : email, password : password, phoneNumber : phoneNumber}).pipe(
       map(response => new Success<string>( response.message || `User Verified`)),
       catchError((error: HttpErrorResponse) => {
@@ -57,7 +60,7 @@ export class ApiServiceService {
   }
 
   ChangePassword(email : string, password : string): Observable<ResultState<string>> {
-    const logUrl = `${this.configService.getBaseUrl()}/auth/changepassword`;
+    const logUrl = `${this.configService.getBaseUrl()}/auth-service/auth/changepassword`;
     return this.http.post<ResponseModel>(logUrl,{ email : email, password : password}).pipe(
       map(response => new Success<string>( response.message || `User Password Changed`)),
       catchError((error: HttpErrorResponse) => {

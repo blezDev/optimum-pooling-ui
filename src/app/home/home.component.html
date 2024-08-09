@@ -8,10 +8,17 @@
       <div class="user-actions">
 
         <a routerLink="/ridepublish" style="padding-right: 25px;">Publish a ride</a>
-        <div class="user-icon">
-            <img src="https://xsgames.co/randomusers/avatar.php?g=male">
+
+        <div class="user-menu">
+          <img src="https://xsgames.co/randomusers/avatar.php?g=male" alt="User Image" class="user-icon" (click)="toggleDropdown()">
+          <div *ngIf="showDropdown" class="dropdown-menu">
+            <ul>
+              <li (click)="logout()">Log out</li>
+            </ul>
+          </div>
         </div>
-      
+
+
       </div>
     </div>
   </div>
@@ -24,7 +31,7 @@
         <input matInput  [matDatepicker]="picker" readonly   [min]="minDate" class="custom-filed" placeholder="Choose a date">
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        <input type="text" placeholder="1 passenger" [(ngModel)]="passengerCount"  >
+        <input type="number" placeholder="Enter the number of passengers" [(ngModel)]="passengerCount"   >
         <button>Search</button>
       </div>
     </div>
@@ -33,19 +40,19 @@
   <div class="trips-section">
     <h2><strong>Date:</strong> August 15, 2024</h2>
     <h1>Available Trips</h1>
-  
+
     <div *ngFor="let trip of trips" class="trip-card">
       <div class="trip-info">
         <h3>{{ trip.departure }}</h3>
         <p><strong>Duration:</strong> {{ trip.duration }}</p>
-        <h3>{{ trip.arrival }}</h3>      
+        <h3>{{ trip.arrival }}</h3>
       </div>
       <div class="trip-actions">
         <button>Book Now</button>
       </div>
     </div>
   </div>
-  
+
 
   <div class="info-section">
     <div class="info-item">

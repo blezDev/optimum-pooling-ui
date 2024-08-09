@@ -7,23 +7,23 @@
     Continue with Google</button>
   <div class="divider">or</div>
   <div class="input-group">
-    <input type="text" id="first-name" placeholder="First Name" formControlName="firstName" />
+    <input type="text" id="first-name" placeholder="First Name" formControlName="firstName" name="firstName" />
   </div>
   <div class="input-group">
 
-    <input type="text" id="last-name" placeholder="Last Name" formControlName="lastName" />
+    <input type="text" id="last-name" placeholder="Last Name" formControlName="lastName" name="lastName" />
   </div>
   <div class="input-group">
 
-    <input type="email" id="email" placeholder="xyz@gmail.com" formControlName="email" />
+    <input type="email" id="email" placeholder="xyz@gmail.com" formControlName="email" name="email" />
   </div>
   <div class="input-group">
 
-    <input type="password" id="password" placeholder="********" formControlName="password" />
+    <input type="password" id="password" placeholder="********" formControlName="password" name="password" />
   </div>
   <div class="input-group">
 
-    <input type="tel"  id="phone-number" placeholder="Phone Number" formControlName="phoneNumber" />
+    <input type="number"  id="phone-number" placeholder="Phone Number" formControlName="phoneNumber" name="phoneNumber" />
   </div>
   <button type="submit" (click)="onSubmit()" class="login-btn">Sign Up</button>
   <p>Already have an account? <a (click)="toggleToLogin(UIState.Login)" style="cursor: pointer;" href="javascript:void(0);" >Login here</a></p>
