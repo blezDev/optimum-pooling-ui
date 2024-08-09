@@ -58,8 +58,8 @@ export class LoginComponent {
           this.setCookies("firstName", result.data?.firstName);
           this.setCookies("lastName", result.data?.lastName);
           this.setCookies("userId", result.data?.userId);
-          this.setCookies("userId", result.data?.userId);
-          console.log(this.getCookies("email"))
+    
+       
           this.showMessage(result.data?.message ?? "Successfully logged in");
           this.router.navigateByUrl('/home',{replaceUrl: true});
         } else {

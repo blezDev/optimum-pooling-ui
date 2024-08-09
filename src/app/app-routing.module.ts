@@ -6,6 +6,7 @@ import {VerificationComponent} from "./verification/verification.component";
 import { HomeComponent } from './home/home.component';
 import { PublishComponent } from './publish/publish.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { BillingComponent } from './billing/billing.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'publish', component: PublishComponent },
   {path : 'change-password', component : ChangePasswordComponent},
+  {path : 'bill', component : BillingComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
