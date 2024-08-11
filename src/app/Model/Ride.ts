@@ -9,5 +9,5 @@ export interface Ride {
     carName: string;
     carNum: string;
     availableSeats: number;
-  }
+}
   
