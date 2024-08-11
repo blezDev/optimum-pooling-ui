@@ -1,73 +1,70 @@
 <div class="header">
-    <div class="header-content">
-      <div class="logo">
-        <img src="assets/pool_logo.png">
-        <span>RideTribe</span>
-      </div>
+  <div class="header-content">
+    <div class="logo">
+      <img src="assets/pool_logo.png" alt="RideTribe Logo">
+      <span>RideTribe</span>
+    </div>
 
-      <div class="user-actions">
+    <div class="user-actions">
+      <a routerLink="/publish" class="publish-link">Publish a ride</a>
 
-        <a routerLink="/publish" style="padding-right: 25px;">Publish a ride</a>
-
-        <div class="user-menu">
-          <img src="https://xsgames.co/randomusers/avatar.php?g=male" alt="User Image" class="user-icon" (click)="toggleDropdown()">
-          <div *ngIf="showDropdown" class="dropdown-menu">
-            <ul>
-              <li (click)="logout()">Log out</li>
-            </ul>
-          </div>
+      <div class="user-menu">
+        <img src="https://xsgames.co/randomusers/avatar.php?g=male" alt="User Image" class="user-icon" (click)="toggleDropdown()">
+        <div *ngIf="showDropdown" class="dropdown-menu">
+          <ul>
+            <li (click)="logout()">Log out</li>
+          </ul>
         </div>
-
-
       </div>
     </div>
   </div>
-  <div class="main-banner">
-    <div class="banner-content">
-      <h1>Choose Your Ride</h1>
-      <div class="search-bar">
-        <input type="text" placeholder="Leaving from">
-        <input type="text" placeholder="Going to">
-        <input matInput  [matDatepicker]="picker" readonly   [min]="minDate" class="custom-filed" placeholder="Choose a date">
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-        <input type="number" placeholder="Enter the number of passengers" [(ngModel)]="passengerCount"   >
-        <button>Search</button>
-      </div>
+</div>
+
+<div class="main-banner">
+  <div class="banner-content">
+    <h1>Choose Your Ride</h1>
+    <form class="search-bar"  [formGroup]="ride">
+      <input type="text" placeholder="Leaving from"  formControlName="rideSource">
+      <input type="text" placeholder="Going to" formControlName="rideDestination" >
+      <input matInput [matDatepicker]="picker" readonly [min]="minDate" class="custom-field" placeholder="Choose a date"  formControlName="rideDate" >
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <input type="number" placeholder="Enter the number of passengers"  min="1" formControlName="availableSeats" >
+      <button (click)="onSearch()">Search</button>
+    </form>
+  </div>
+</div>
+
+<div class="trips-section" *ngIf="rides.length > 0">
+  <h2><strong>Date:</strong> {{ Date.now() | date: 'MMMM dd, yyyy' }}</h2>
+  <h1>Available Trips</h1>
+
+  <div *ngFor="let trip of rides" class="trip-card">
+    <div class="trip-info">
+      <h3>{{ trip.rideSource }} to {{ trip.rideDestination }}</h3>
+      <!-- <p><strong>Departure:</strong> {{ trip.date | date }} at {{ trip.da }}</p> -->
+      <!-- <p><strong>Available Seats:</strong> {{ trip.availableSeats }}</p> -->
+    </div>
+    <div class="trip-actions">
+      <button>Book Now</button>
     </div>
   </div>
+</div>
 
-  <div class="trips-section">
-    <h2><strong>Date:</strong> August 15, 2024</h2>
-    <h1>Available Trips</h1>
-
-    <div *ngFor="let trip of trips" class="trip-card">
-      <div class="trip-info">
-        <h3>{{ trip.departure }}</h3>
-        <p><strong>Duration:</strong> {{ trip.duration }}</p>
-        <h3>{{ trip.arrival }}</h3>
-      </div>
-      <div class="trip-actions">
-        <button>Book Now</button>
-      </div>
-    </div>
+<div class="info-section">
+  <div class="info-item">
+    <img src="assets/save_money.png" alt="Low Prices">
+    <h3>Your pick of rides at low prices</h3>
+    <p>No matter where you're going, find the perfect ride from our wide range of destinations and routes at low prices.</p>
   </div>
-
-
-  <div class="info-section">
-    <div class="info-item">
-      <img src="assets/save_money.png" alt="Icon 1"> <!-- Replace with your actual icon -->
-      <h3>Your pick of rides at low prices</h3>
-      <p>No matter where you're going, by bus or carpool, find the perfect ride from our wide range of destinations and routes at low prices.</p>
-    </div>
-    <div class="info-item">
-      <img src="assets/id_card.png" alt="Icon 2"> <!-- Replace with your actual icon -->
-      <h3>Trust who you travel with</h3>
-      <p>We take the time to get to know each of our members and bus partners. We check reviews, profiles, and IDs, so you know who you're traveling with and can book your ride at ease on our secure platform.</p>
-    </div>
-    <div class="info-item">
-      <img src="assets/thunder.png" alt="Icon 3"> <!-- Replace with your actual icon -->
-      <h3>Scroll, click, tap and go!</h3>
-      <p>Booking a ride has never been easier! Thanks to our simple app powered by great technology, you can book a ride close to you in just minutes.</p>
-    </div>
+  <div class="info-item">
+    <img src="assets/id_card.png" alt="Trust">
+    <h3>Trust who you travel with</h3>
+    <p>We check reviews, profiles, and IDs so you can book your ride at ease on our secure platform.</p>
   </div>
+  <div class="info-item">
+    <img src="assets/thunder.png" alt="Easy Booking">
+    <h3>Scroll, click, tap and go!</h3>
+    <p>Booking a ride has never been easier! Book a ride close to you in just minutes.</p>
+  </div>
+</div>

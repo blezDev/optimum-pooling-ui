@@ -9,7 +9,9 @@ import { ConfigService } from '../configs/config.service';
 })
 export class RideService {
 
-  private baseUrl = `${this.configService.getBaseUrl()}/ride`;  
+  // private baseUrl = `${this.configService.getBaseUrl()}/ride-service/ride`;
+  private baseUrl = "http://localhost:8091/ride";
+
 
   constructor(private http: HttpClient,private configService: ConfigService) { }
 
@@ -22,7 +24,7 @@ export class RideService {
   addRide(ride: Ride): Observable<Ride> {
     return this.http.post<Ride>(`${this.baseUrl}/add`, ride);
   }
-  
+
 
   // Method to update an existing ride
   updateRide(ride: Ride): Observable<Ride> {
