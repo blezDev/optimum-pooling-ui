@@ -23,6 +23,12 @@ import {LoadingComponent} from "./shared/loading/loading.component";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatInputModule} from "@angular/material/input";
+import {
+  GoogleLoginProvider,
+  GoogleSigninButtonModule,
+  SocialAuthServiceConfig,
+  SocialLoginModule
+} from "@abacritt/angularx-social-login";
 
 
 @NgModule({
@@ -54,10 +60,24 @@ import {MatInputModule} from "@angular/material/input";
     MatNativeDateModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    MatInputModule
-
+    MatInputModule,
+    SocialLoginModule,
+    GoogleSigninButtonModule
   ],
-  providers: [],
+  providers: [{
+    provide: 'SocialAuthServiceConfig',
+    useValue : {
+      autoLogin: false,
+      providers: [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider('263620112727-u30qjpfp4satlg2fb80puu5pttncep4q.apps.googleusercontent.com'),
+        },
+
+      ],
+  onError: (error)=> console.log(error),
+    } as SocialAuthServiceConfig
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

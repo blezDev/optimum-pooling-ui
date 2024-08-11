@@ -7,6 +7,8 @@ import { RidesearchService } from '../services/ridesearch/ridesearch.service';
 import { formatDate } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {RideService} from "../services/ride/ride.service";
+import {SocialAuthService} from "@abacritt/angularx-social-login";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Component({
@@ -17,12 +19,23 @@ import {RideService} from "../services/ride/ride.service";
 export class HomeComponent {
   minDate = new Date();  // Ensures the date picker defaults to today's date or later
   passengerCount: string = "";
-  constructor(private cookieService: CookieService,private router: Router, private rideSearchService: RidesearchService) {
+  constructor(private cookieService: CookieService,
+              private router: Router,
+              private rideSearchService: RidesearchService,
+              private socialAuthService: SocialAuthService,
+              private snackBar: MatSnackBar,
+              ) {
     const today = new Date();
     this.minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
   }
 
 
+
+  showMessage(message: string) {
+    this.snackBar.open(message, 'Close', {
+      duration: 3000,
+    });
+  }
 
   showDropdown = false;
   toggleDropdown(): void {
@@ -34,7 +47,11 @@ export class HomeComponent {
     this.cookieService.deleteAll();
     // Possibly redirect user or refresh the authentication status
     this.showDropdown = false;
-    this.router.navigate(['/login'],{replaceUrl : true});
+    this.socialAuthService.signOut()
+
+    this.router.navigate(['/login'], {replaceUrl: true}).then(r => {
+      this.showMessage("Logged out.");
+    });
     // Redirect or perform additional cleanup
   }
 

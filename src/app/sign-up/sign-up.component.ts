@@ -1,28 +1,68 @@
-import {Component, Inject, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ToggleModeService} from "../services/toggle-mode.service";
 import {UIState} from "../shared/UIState";
 import {VerificationComponent} from "../verification/verification.component";
-import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
+import {MatDialog} from "@angular/material/dialog";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ResultState, Success} from "../shared/ResultState";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ApiServiceService} from "../services/remote/api-service.service";
 import {Router} from "@angular/router";
 
+
+import {GoogleLoginProvider, SocialAuthService} from "@abacritt/angularx-social-login";
+import {CookieService} from "ngx-cookie-service";
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent {
+export class SignUpComponent{
   constructor(private toggleModeService: ToggleModeService,
               public dialog: MatDialog,
               private snackBar: MatSnackBar,
               private apiService: ApiServiceService,
               private router: Router,
+              private cookies: CookieService,
+
   ) {
 
   }
+
+  setCookies(key : string, value : string) {
+    this.cookies.set(key, value);
+  }
+  // ngOnInit(): void {
+  //
+  //   this.socialAuthService.authState.subscribe((user) => {
+  //     if (user != null){
+  //       this.isLoading = true;
+  //       this.apiService.GoogleLogin(user.firstName,user.lastName,user.email).subscribe(result => {
+  //         if (result instanceof Success) {
+  //           this.isLoading = false;
+  //           console.log(result.data)
+  //           this.setCookies("email", user.email);
+  //           this.setCookies("firstName", user.firstName);
+  //           this.setCookies("lastName", user.lastName);
+  //           this.setCookies("userId", result?.data);
+  //           this.showMessage(result.data?.message ?? "Successfully logged in");
+  //           this.router.navigateByUrl('/home',{replaceUrl: true});
+  //         }else{
+  //           this.isLoading = false;
+  //           this.showMessage(result.message ?? "Failed to log in");
+  //         }
+  //       });
+  //     }else{
+  //       this.isLoading = false;
+  //     }
+  //     //perform further logics
+  //   });
+  //
+  // }
+
+
+
 
   isLoading: boolean = false;
   signup = new FormGroup({

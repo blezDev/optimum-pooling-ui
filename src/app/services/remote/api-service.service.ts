@@ -59,6 +59,18 @@ export class ApiServiceService {
     )
   }
 
+  GoogleLogin(firstName : string,lastName : string,email : string): Observable<ResultState<string>> {
+    const logUrl = `${this.configService.getBaseUrl()}/auth-service/auth/googlesignup`;
+    return this.http.post<ResponseModel>(logUrl,{ email : email, firstName : firstName,lastName : lastName}).pipe(
+      map(response => new Success<string>( response.message || `User Logged in.`)),
+      catchError((error: HttpErrorResponse) => {
+        const message = error.error?.message || error.message || 'An error occurred';
+        return of(new Error<string>(message));
+      })
+    )
+  }
+
+
   ChangePassword(email : string, password : string): Observable<ResultState<string>> {
     const logUrl = `${this.configService.getBaseUrl()}/auth-service/auth/changepassword`;
     return this.http.post<ResponseModel>(logUrl,{ email : email, password : password}).pipe(

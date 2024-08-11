@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ToggleModeService} from "../services/toggle-mode.service";
 import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
 import {MatDialog} from "@angular/material/dialog";
@@ -10,6 +10,7 @@ import {ResultState, Success} from "../shared/ResultState";
 import {Router} from "@angular/router";
 import { CookieService } from 'ngx-cookie-service';
 import { AuthResponseModel } from '../shared/ResponseModel';
+import {GoogleLoginProvider, SocialAuthService, SocialUser} from "@abacritt/angularx-social-login";
 
 @Component({
   selector: 'app-login',
@@ -33,7 +34,7 @@ import { AuthResponseModel } from '../shared/ResponseModel';
     ])
   ]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
   uiState: UIState = UIState.Login;
   isLoading :boolean = false;
@@ -43,6 +44,41 @@ export class LoginComponent {
   });
 
   state: ResultState<AuthResponseModel> | null = null;
+  socialUser!: SocialUser;
+  ngOnInit(): void {
+    this.socialAuthService.authState.subscribe((user) => {
+      if (user != null){
+        this.isLoading = true;
+        this.apiService.GoogleLogin(user.firstName,user.lastName,user.email).subscribe(result => {
+          if (result instanceof Success) {
+            this.isLoading = false;
+            console.log(result.data)
+            this.setCookies("email", user.email);
+            this.setCookies("firstName", user.firstName);
+            this.setCookies("lastName", user.lastName);
+            this.setCookies("userId", result?.data);
+            this.showMessage(result.data?.message ?? "Successfully logged in");
+            this.router.navigateByUrl('/home',{replaceUrl: true});
+          }else{
+            this.isLoading = false;
+            this.showMessage(result.message ?? "Failed to log in");
+          }
+        });
+      }else{
+        this.isLoading = false;
+      }
+      //perform further logics
+    });
+
+
+  }
+
+
+
+  logOut(): void {
+    this.socialAuthService.signOut();
+  }
+
 
   onSubmit() {
     if (this.loginForm.valid) {
@@ -58,8 +94,6 @@ export class LoginComponent {
           this.setCookies("firstName", result.data?.firstName);
           this.setCookies("lastName", result.data?.lastName);
           this.setCookies("userId", result.data?.userId);
-    
-       
           this.showMessage(result.data?.message ?? "Successfully logged in");
           this.router.navigateByUrl('/home',{replaceUrl: true});
         } else {
@@ -81,7 +115,9 @@ export class LoginComponent {
               private snackBar: MatSnackBar,
               private apiService: ApiServiceService,
               private router: Router,
-              private cookies: CookieService) {
+              private cookies: CookieService,
+              private socialAuthService: SocialAuthService,) {
+
     this.toggleModeService.isSignUpMode.subscribe(mode => {
       this.uiState = mode;
     });
@@ -110,7 +146,9 @@ export class LoginComponent {
   }
   loginWithGoogle() {
     // Placeholder for Google sign-in functionality
-    console.log('Sign in with Google');
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID,{
+
+    });
   }
 
 

@@ -9,7 +9,7 @@
 
   <div class="login-right">
 
-
+    <script src="https://accounts.google.com/gsi/client" async></script>
    <ng-container [ngSwitch]="uiState" >
 
       <!-- <app-forget-password @fadeSlideInOut></app-forget-password> -->
@@ -17,12 +17,14 @@
         <form @fadeSlideInOut  [formGroup]="loginForm">
           <h2 class="divider">Login to your Account</h2>
           <!--<p>See what's going on with your business</p>-->
-          <button class="google-login" (click)="loginWithGoogle()">
-            <img ngSrc="assets/google_png.png" width="512" height="512"
-                 style="width: 25px; height: 25px; vertical-align: middle; margin-right: 8px; margin-bottom: 4px" alt="">
-            Continue with Google
+<!--          <button class="google-login" (click)="loginWithGoogle()">-->
+<!--            <img ngSrc="assets/google_png.png" width="512" height="512"-->
+<!--                 style="width: 25px; height: 25px; vertical-align: middle; margin-right: 8px; margin-bottom: 4px" alt="">-->
+<!--            Continue with Google-->
 
-          </button>
+<!--          </button>-->
+          <asl-google-signin-button type='standard' size='large' text="signin_with" theme="outline" logo_alignment ="center" style="display: flex; align-items: center; justify-content: center" (click)="loginWithGoogle()">
+          </asl-google-signin-button>
           <div class="divider">or</div>
 
           <div class="input-group">
