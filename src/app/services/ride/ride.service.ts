@@ -9,7 +9,9 @@ import { ConfigService } from '../configs/config.service';
 })
 export class RideService {
 
-  private baseUrl = `${this.configService.getBaseUrl()}/ride`;  
+  // private baseUrl = `${this.configService.getBaseUrl()}/ride`;  
+  private baseUrl = "http://localhost:8091/ride";  
+
 
   constructor(private http: HttpClient,private configService: ConfigService) { }
 

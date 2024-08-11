@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './publish.component.html',
   styleUrls: ['./publish.component.css']
 })
+
 export class PublishComponent {
   isLoading :boolean = false;
   ride: Ride = {
@@ -41,6 +42,7 @@ export class PublishComponent {
       duration: 3000,
     });
   }
+  
 
 
   addRide(): void {
@@ -64,6 +66,7 @@ export class PublishComponent {
       response => {
 
         this.showMessage("Ride added successfully");
+        console.log(formattedRide)
         this.isLoading = false;
       
       },
@@ -84,12 +87,12 @@ export class PublishComponent {
     return formatDate(date, 'dd-MM-yyyy', 'en-US');
   }
 
-  private formatTimeFromDate(date: Date): string {
-    // Extract hours and minutes from the Date object
-    const hours = date.getHours().toString().padStart(2, '0');
-    const minutes = date.getMinutes().toString().padStart(2, '0');
+  // private formatTimeFromDate(date: Date): string {
+  //   // Extract hours and minutes from the Date object
+  //   const hours = date.getHours().toString().padStart(2, '0');
+  //   const minutes = date.getMinutes().toString().padStart(2, '0');
     
-    // Format time to 'HH:mm'
-    return `${hours}:${minutes}`;
-  }
+  //   // Format time to 'HH:mm'
+  //   return `${hours}:${minutes}`;
+  // }
 }
