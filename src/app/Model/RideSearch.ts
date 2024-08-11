@@ -1,6 +1,6 @@
 export interface RideSearch {
-    start: string;
-    end : string;
-    date : Date;
-    passenger : number;
+  rideSource: string;
+  rideDestination : string;
+  rideDate : string;
+  availableSeats : number;
 }

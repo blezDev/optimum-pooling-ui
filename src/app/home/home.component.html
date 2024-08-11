@@ -23,20 +23,20 @@
 <div class="main-banner">
   <div class="banner-content">
     <h1>Choose Your Ride</h1>
-    <form class="search-bar"  [formGroup]="rideForm">
-      <input type="text" placeholder="Leaving from" [(ngModel)]="rideSearch.start" formControlName="rideSource" name="rideSource">
-      <input type="text" placeholder="Going to" [(ngModel)]="rideSearch.end" formControlName="rideDestination" name="rideDestination">
-      <input matInput [matDatepicker]="picker" readonly [min]="minDate" class="custom-field" placeholder="Choose a date" [(ngModel)]="rideSearch.date" formControlName="rideDate" name="rideDate">
+    <form class="search-bar"  [formGroup]="ride">
+      <input type="text" placeholder="Leaving from"  formControlName="rideSource">
+      <input type="text" placeholder="Going to" formControlName="rideDestination" >
+      <input matInput [matDatepicker]="picker" readonly [min]="minDate" class="custom-field" placeholder="Choose a date"  formControlName="rideDate" >
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <input type="number" placeholder="Enter the number of passengers" [(ngModel)]="rideSearch.passenger" min="1" formControlName="availableSeats" name="availableSeats">
+      <input type="number" placeholder="Enter the number of passengers"  min="1" formControlName="availableSeats" >
       <button (click)="onSearch()">Search</button>
     </form>
   </div>
 </div>
 
 <div class="trips-section" *ngIf="rides.length > 0">
-  <h2><strong>Date:</strong> {{ rideSearch.date | date: 'MMMM dd, yyyy' }}</h2>
+  <h2><strong>Date:</strong> {{ Date.now() | date: 'MMMM dd, yyyy' }}</h2>
   <h1>Available Trips</h1>
 
   <div *ngFor="let trip of rides" class="trip-card">

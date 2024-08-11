@@ -10,14 +10,14 @@ import { ConfigService } from '../configs/config.service';
 })
 export class RidesearchService {
 
-  private baseUrl = 'http://localhost:8091/ride'
+private baseUrl: string = "http://localhost:8091/ride";
 
-  // private baseUrl = `${this.configService.getBaseUrl()}/ride-service/ride`;  
+ // private baseUrl = `${this.configService.getBaseUrl()}/ride-service/ride`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private configService: ConfigService) { }
 
   searchRides(rideSearch: RideSearch): Observable<Ride[]> {
     return this.http.post<Ride[]>(`${this.baseUrl}/search`, rideSearch);
-  } 
-  
+  }
+
 }

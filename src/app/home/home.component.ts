@@ -6,6 +6,7 @@ import { RideSearch } from '../Model/RideSearch';
 import { RidesearchService } from '../services/ridesearch/ridesearch.service';
 import { formatDate } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {RideService} from "../services/ride/ride.service";
 
 
 @Component({
@@ -20,9 +21,9 @@ export class HomeComponent {
     const today = new Date();
     this.minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
   }
-  
-  
-  
+
+
+
   showDropdown = false;
   toggleDropdown(): void {
     this.showDropdown = !this.showDropdown;
@@ -37,11 +38,11 @@ export class HomeComponent {
     // Redirect or perform additional cleanup
   }
 
-  
+
   rides: Ride[] = [];
- 
+
   errorMessage: string | null = null;
-  
+
   ride = new FormGroup({
     rideSource: new FormControl('', [Validators.required]),
     rideDestination: new FormControl('', [Validators.required]),
@@ -52,19 +53,21 @@ export class HomeComponent {
 
   onSearch() {
 
-   
-    const formattedRide: any = {
-      ...this.ride,
-      rideDate: this.formatDateForBackend(this.ride.value.rideDate),
-      // rideTime: this.formatTimeFromDate(new Date(this.ride.rideDate.setHours(this.ride.rideTime.hours, this.ride.rideTime.minutes)))
-    };
 
-    this.rideSearchService.searchRides(formattedRide).subscribe(
+
+    const rideSearch: RideSearch = {
+      rideSource: this.ride.get('rideSource')?.value,
+      rideDestination: this.ride.get('rideDestination')?.value,
+      rideDate: this.formatDateForBackend(this.ride.get('rideDate')?.value),
+      availableSeats: this.ride.get('availableSeats')?.value,
+    };
+    console.log(rideSearch);
+    this.rideSearchService.searchRides(rideSearch).subscribe(
       (data: Ride[]) => {
         this.rides = data;
         this.errorMessage = null;
         console.log(this.rides)
-        console.log(formattedRide.date)
+        console.log(rideSearch.rideDate)
       },
       (error) => {
         this.errorMessage = 'An error occurred while searching for rides.';
@@ -78,6 +81,6 @@ export class HomeComponent {
     return formatDate(date, 'dd-MM-yyyy', 'en-US');
   }
 
-  
 
+  protected readonly Date = Date;
 }
