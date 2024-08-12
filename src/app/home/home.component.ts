@@ -9,6 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {RideService} from "../services/ride/ride.service";
 import {SocialAuthService} from "@abacritt/angularx-social-login";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import { Billing } from '../billing/billling.model';
 
 
 @Component({
@@ -67,6 +68,20 @@ export class HomeComponent {
     availableSeats: new FormControl(0, [Validators.required]),
   });
 
+
+billGenerate(){
+  const sampleBilling: Billing = {
+    name: "John Doe",
+    fare: "$50.00",
+    totalCharges: "₹250.00",
+    numberOfPassengers: "2",
+    startDestination: "123 Main St",
+    endDestination: "456 Elm St",
+    carModel: "Toyota Camry",
+    carNumber: "XYZ 1234"
+};
+this.router.navigate(['/bill'], { queryParams: sampleBilling });
+}
 
   onSearch() {
 

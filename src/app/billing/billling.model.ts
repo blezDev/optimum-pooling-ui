@@ -1,7 +1,6 @@
 export interface Billing {
     name: string;
     fare: string;
-    commissions: string;
     totalCharges: string;
     numberOfPassengers: string;
     startDestination: string;
