@@ -1,0 +1,14 @@
+<div class="container">
+    <h2>Trip History</h2>
+    
+    <div class="history-details" *ngIf="trips.length > 0; else noTrips">
+        <div class="trip-record" *ngFor="let trip of trips">
+            <p><strong>Ride ID:</strong> {{ trip.rideId || 'N/A' }}</p>
+            <p><strong>Customer ID:</strong> {{ trip.customerId || 'N/A' }}</p>
+        </div>
+    </div>
+
+    <ng-template #noTrips>
+        <p>No trips found.</p>
+    </ng-template>
+</div>

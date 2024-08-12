@@ -81,7 +81,16 @@ export class ApiServiceService {
       })
     )
   }
-
-
+  TripBill(startDestination : string, endDestination : string,numberOfPassenger : number,kmPrice : number,name : string): Observable<ResultState<string>> {
+   // const logUrl = `${this.configService.getBaseUrl()}/billing-service/bill/trip`;
+   const logUrl = `http://localhost:9090/bill/trip`;
+    return this.http.post<ResponseModel>(logUrl,{ startDestination : startDestination, endDestination : endDestination,numberOfPassenger : numberOfPassenger,kmPrice : kmPrice,name : name}).pipe(
+      map(response => new Success<string>( response.message || `bill generated.`)),
+      catchError((error: HttpErrorResponse) => {
+        const message = error.error?.message || error.message || 'An error occurred';
+        return of(new Error<string>(message));
+      })
+    )
+  }
 
 }
