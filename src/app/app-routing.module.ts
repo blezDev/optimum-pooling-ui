@@ -10,10 +10,10 @@ import { BillingComponent } from './billing/billing.component';
 import {authGuard} from "./guards/auth.guard";
 import {reverseAuthGuard} from "./guards/reverse-auth.guard";
 const routes: Routes = [
-  { path: 'login', component: LoginComponent  ,canActivate : [reverseAuthGuard]},
+  { path: 'login', component: LoginComponent  , canActivate : [reverseAuthGuard]},
   { path: 'sign-up', component: SignUpComponent ,canActivate : [reverseAuthGuard]},
   { path: 'verify', component: VerificationComponent ,canActivate : [reverseAuthGuard]},
-  { path: 'home', component: HomeComponent,canActivate : [authGuard] },
+  { path: 'home', component: HomeComponent,canActivate : [authGuard]},
   { path: 'publish', component: PublishComponent,canActivate : [authGuard] },
   {path : 'change-password', component : ChangePasswordComponent,canActivate : [authGuard]},
   {path : 'bill', component : BillingComponent,canActivate : [authGuard]},

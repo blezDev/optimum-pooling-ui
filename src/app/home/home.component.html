@@ -35,13 +35,18 @@
   </div>
 </div>
 
-<div class="trips-section" *ngIf="rides.length > 0">
-  <h2><strong>Date:</strong> {{ Date.now() | date: 'MMMM dd, yyyy' }}</h2>
+<!--  -->
+<div class="trips-section" *ngIf="rides.length > 0" > 
+  <!-- <h2><strong>Date:</strong> {{ Date.now() | date: 'MMMM dd, yyyy' }}</h2> -->
   <h1>Available Trips</h1>
 
-  <div *ngFor="let trip of rides" class="trip-card">
+  <div  class="trip-card">
     <div class="trip-info">
-      <h3>{{ trip.rideSource }} to {{ trip.rideDestination }}</h3>
+      <h3>
+        <img src="assets/trip-car.png" [align]="'left'" height="50px" width="50px">
+        MUMBAI &nbsp;&nbsp; <img src="assets/arrow.png" height="30px" width="30px"> &nbsp;&nbsp; PUNE
+      </h3>
+      
       <!-- <p><strong>Departure:</strong> {{ trip.date | date }} at {{ trip.da }}</p> -->
       <!-- <p><strong>Available Seats:</strong> {{ trip.availableSeats }}</p> -->
     </div>
