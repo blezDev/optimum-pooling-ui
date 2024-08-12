@@ -85,8 +85,6 @@ this.router.navigate(['/bill'], { queryParams: sampleBilling });
 
   onSearch() {
 
-
-
     const rideSearch: RideSearch = {
       rideSource: this.ride.get('rideSource')?.value,
       rideDestination: this.ride.get('rideDestination')?.value,
@@ -94,18 +92,19 @@ this.router.navigate(['/bill'], { queryParams: sampleBilling });
       availableSeats: this.ride.get('availableSeats')?.value,
     };
     console.log(rideSearch);
+    
     this.rideSearchService.searchRides(rideSearch).subscribe(
       (data: Ride[]) => {
         this.rides = data;
         this.errorMessage = null;
         console.log(this.rides)
-        console.log(rideSearch.rideDate)
       },
       (error) => {
         this.errorMessage = 'An error occurred while searching for rides.';
         console.error(error);
       }
     );
+    
   }
 
   private formatDateForBackend(date: Date): string {
