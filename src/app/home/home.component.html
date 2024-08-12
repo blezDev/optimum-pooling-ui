@@ -37,25 +37,27 @@
 </div>
 
 <!-- *ngIf="rides.length > 0" -->
-<div class="trips-section"  > 
+<div class="trips-section" *ngIf="rides.length > 0" > 
   <!-- <h2><strong>Date:</strong> {{ Date.now() | date: 'MMMM dd, yyyy' }}</h2> -->
   <h1>Available Trips</h1>
 
-  <div  class="trip-card">
-    <div class="trip-info">
+  <div class="trip-card">
+    <div class="trip-info" *ngFor="let trip of rides">
       <h3>
-        <img src="assets/trip-car.png" [align]="'left'" height="50px" width="50px">
-        MUMBAI &nbsp;&nbsp; <img src="assets/arrow.png" height="30px" width="30px"> &nbsp;&nbsp; PUNE
+        <img src="assets/trip-car.png" align="left" height="50px" width="50px">
+        {{ trip.rideSource }} &nbsp;&nbsp; 
+        <img src="assets/arrow.png" height="30px" width="30px"> &nbsp;&nbsp; 
+        {{ trip.rideDestination }}
       </h3>
-      
-      <!-- <p><strong>Departure:</strong> {{ trip.date | date }} at {{ trip.da }}</p> -->
+      <!-- Uncomment if needed -->
+      <!-- <p><strong>Departure:</strong> {{ trip.date | date }} at {{ trip.time }}</p> -->
       <!-- <p><strong>Available Seats:</strong> {{ trip.availableSeats }}</p> -->
     </div>
     <div class="trip-actions">
       <button>Book Now</button>
     </div>
   </div>
-</div>
+</div>  
 
 <div class="info-section">
   <div class="info-item">

@@ -5,6 +5,7 @@ import { formatDate } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-publish',
@@ -22,7 +23,8 @@ export class PublishComponent {
     rideTime: { hours: new Date().getHours(), minutes: new Date().getMinutes() },
     carName: '',
     carNum: '',
-    availableSeats: null
+    availableSeats: null,
+    publisherId: Number(this.getCookies('userId'))
   };
 
   rideForm = new FormGroup({
@@ -34,7 +36,7 @@ export class PublishComponent {
     carNum: new FormControl('', [Validators.required]),
     availableSeats: new FormControl(0, [Validators.required]),
   });
-  constructor(private rideService: RideService, private snackBar: MatSnackBar, public dialog: MatDialog,) { }
+  constructor(private rideService: RideService, private snackBar: MatSnackBar, public dialog: MatDialog, private cookies: CookieService) { }
 
 
   showMessage(message: string) {
@@ -85,6 +87,13 @@ export class PublishComponent {
   private formatDateForBackend(date: Date): string {
     // Format date to 'dd-MM-yyyy'
     return formatDate(date, 'dd-MM-yyyy', 'en-US');
+  }
+
+  setCookies(key : string, value : string) {
+    this.cookies.set(key, value);
+  }
+  getCookies(key : string) {
+    return this.cookies.get(key);
   }
 
   // private formatTimeFromDate(date: Date): string {
