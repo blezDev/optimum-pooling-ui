@@ -1,53 +1,41 @@
 .container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fdfdfd;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  margin: 20px auto;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  border-radius: 8px;
+  color: #333;
 }
 
 h2 {
-    text-align: center;
-    color: #6d2e57;
-    font-family: 'Arial', sans-serif;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #6d2e57;
-    padding-bottom: 10px;
+  color: #6d2e57;
+  text-align: center;
 }
 
 .history-details {
-    margin-top: 20px;
+  border-top: 2px solid #6d2e57;
+  padding-top: 20px;
 }
 
 .trip-record {
-    margin-bottom: 15px;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
+  background-color: #f9f9f9;
+  border-left: 4px solid #6d2e57;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .trip-record p {
-    font-family: 'Arial', sans-serif;
-    color: #555;
-    padding: 5px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.trip-record p:last-child {
-    border-bottom: none;
+  font-size: 16px;
+  color: #555;
+  margin: 5px 0;
 }
 
 .trip-record p strong {
-    color: #6d2e57;
-    font-weight: bold;
+  color: #6d2e57;
 }
 
-.trip-record:nth-child(odd) {
-    background-color: #f9f9f9;
-}
-
-.trip-record:nth-child(even) {
-    background-color: #fff;
+.ng-template p {
+  text-align: center;
+  color: #6d2e57;
 }

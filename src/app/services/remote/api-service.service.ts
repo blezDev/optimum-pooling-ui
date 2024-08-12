@@ -4,6 +4,8 @@ import {ConfigService} from "../configs/config.service";
 import {catchError, map, Observable, of} from "rxjs";
 import {ResultState, Error,Success} from "../../shared/ResultState";
 import {AuthResponseModel, ResponseModel} from "../../shared/ResponseModel";
+import {FetchModel} from "../../billing/FetchModel";
+import {TripModel} from "../../trip-history/TripModel";
 
 @Injectable({
   providedIn: 'root'
@@ -81,11 +83,23 @@ export class ApiServiceService {
       })
     )
   }
-  TripBill(startDestination : string, endDestination : string,numberOfPassenger : number,kmPrice : number,name : string): Observable<ResultState<string>> {
-   // const logUrl = `${this.configService.getBaseUrl()}/billing-service/bill/trip`;
-   const logUrl = `http://localhost:9090/bill/trip`;
-    return this.http.post<ResponseModel>(logUrl,{ startDestination : startDestination, endDestination : endDestination,numberOfPassenger : numberOfPassenger,kmPrice : kmPrice,name : name}).pipe(
-      map(response => new Success<string>( response.message || `bill generated.`)),
+  TripBill(startDestination : string, endDestination : string,numberOfPassenger : number,kmPrice : number,name : string): Observable<ResultState<FetchModel>> {
+   const logUrl = `${this.configService.getBaseUrl()}/billing-service/bill/trip`;
+   // const logUrl = `http://localhost:9090/bill/trip`;
+    return this.http.post<FetchModel>(logUrl,{ startDestination : startDestination, endDestination : endDestination,numberOfPassenger : numberOfPassenger,kmPrice : kmPrice,name : name}).pipe(
+      map(response => new Success<FetchModel>( response)),
+      catchError((error: HttpErrorResponse) => {
+        const message = error.error?.message || error.message || 'An error occurred';
+        return of(new Error<FetchModel>(message));
+      })
+    )
+  }
+
+  BookTrip(c_userId : string, c_name : string,c_email : string,rideSource : string,rideDestination : string,rideDate : string,fare : string,carName : string,carNumber : string,r_email : string,r_userId : string,seatsOccupied : string ): Observable<ResultState<string>> {
+    const logUrl = `${this.configService.getBaseUrl()}/trip-service/trip/createTrip`;
+    // const logUrl = `http://localhost:9090/bill/trip`;
+    return this.http.post<ResponseModel>(logUrl,{c_userId : c_userId, c_name : c_name,c_email : c_email,rideSource : rideSource,rideDestination : rideDestination,rideDate : rideDate,fare : fare,carName : carName,carNumber : carNumber,r_email : r_email,r_userId : r_userId,seatsOccupied : seatsOccupied }).pipe(
+      map(response => new Success<string>( response.message)),
       catchError((error: HttpErrorResponse) => {
         const message = error.error?.message || error.message || 'An error occurred';
         return of(new Error<string>(message));
@@ -93,4 +107,15 @@ export class ApiServiceService {
     )
   }
 
+  BookHistory(c_userId : string ): Observable<ResultState<TripModel[]>> {
+    const logUrl = `${this.configService.getBaseUrl()}/trip-service/trip/getTripsBycid/${c_userId}`;
+    // const logUrl = `http://localhost:9090/bill/trip`;
+    return this.http.post<TripModel[]>(logUrl,{}).pipe(
+      map(response => new Success<TripModel[]>(response)),
+      catchError((error: HttpErrorResponse) => {
+        const message = error.error?.message || error.message || 'An error occurred';
+        return of(new Error<TripModel[]>(message));
+      })
+    )
+  }
 }

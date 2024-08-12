@@ -24,7 +24,9 @@ export class PublishComponent {
     carName: '',
     carNum: '',
     availableSeats: null,
-    publisherId: Number(this.getCookies('userId'))
+    publisherId: Number(this.getCookies('userId')),
+    r_email : this.getCookies("email"),
+    r_name : this.getCookies("firstName") + " " + this.getCookies("lastName"),
   };
 
   rideForm = new FormGroup({
@@ -44,7 +46,7 @@ export class PublishComponent {
       duration: 3000,
     });
   }
-  
+
 
 
   addRide(): void {
@@ -52,9 +54,9 @@ export class PublishComponent {
       this.isLoading = true;
        // Ensure rideTime is properly initialized
     if (!this.ride.rideTime || this.ride.rideTime.hours === undefined || this.ride.rideTime.minutes === undefined) {
-    
+
       console.log(this.ride.rideTime);
-      
+
     }
 
     // Convert rideDate and rideTime to the correct format before sending
@@ -70,15 +72,15 @@ export class PublishComponent {
         this.showMessage("Ride added successfully");
         console.log(formattedRide)
         this.isLoading = false;
-      
+
       },
       error => {
         this.isLoading = false;
         this.showMessage('Error adding ride')
       }
-      
+
     );
-    
+
     }else{
         this.showMessage("Please fill all fields.");
     }
@@ -100,7 +102,7 @@ export class PublishComponent {
   //   // Extract hours and minutes from the Date object
   //   const hours = date.getHours().toString().padStart(2, '0');
   //   const minutes = date.getMinutes().toString().padStart(2, '0');
-    
+
   //   // Format time to 'HH:mm'
   //   return `${hours}:${minutes}`;
   // }

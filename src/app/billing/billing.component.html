@@ -1,6 +1,6 @@
 <div class="container">
     <h2>Billing Record</h2>
-    
+  <app-loading *ngIf="isLoading"></app-loading>
     <div class="billing-details">
       <p><strong>Name:</strong> {{ billingData.name || 'N/A' }}</p>
       <p><strong>Fare:</strong> {{ billingData.fare || 'N/A' }}</p>
@@ -13,8 +13,7 @@
     </div>
 
     <div class="payment-button-container">
-        <button class="button-pay-now">Pay Now & Book</button>
+        <button class="button-pay-now" (click) = "Book()">Pay Now & Book</button>
       </div>
-      
+
   </div>
-  

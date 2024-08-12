@@ -10,5 +10,6 @@ export interface Ride {
     carNum: string;
     availableSeats: number;
     publisherId: number;
+    r_name : string ;
+    r_email : string ;
 }
-  

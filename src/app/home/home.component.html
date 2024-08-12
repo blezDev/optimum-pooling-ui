@@ -13,6 +13,7 @@
         <div *ngIf="showDropdown" class="dropdown-menu">
           <ul>
             <li>My Rides</li>
+            <li (click)="navigateToTripHistory()" >My Trips</li>
             <li (click)="logout()">Log out</li>
           </ul>
         </div>
@@ -37,29 +38,46 @@
 </div>
 
 <!-- *ngIf="rides.length > 0" -->
-<div class="trips-section" *ngIf="rides.length > 0" > 
+<div class="trips-section" *ngIf="rides.length > 0" >
   <!-- <h2><strong>Date:</strong> {{ Date.now() | date: 'MMMM dd, yyyy' }}</h2> -->
   <h1>Available Trips</h1>
 
-  <div class="trip-card">
+ <!-- <div class="trip-card">
     <div class="trip-info" *ngFor="let trip of rides">
       <h3>
         <img src="assets/trip-car.png" align="left" height="50px" width="50px">
-        {{ trip.rideSource }} &nbsp;&nbsp; 
-        <img src="assets/arrow.png" height="30px" width="30px"> &nbsp;&nbsp; 
+        {{ trip.rideSource }} &nbsp;&nbsp;
+        <img src="assets/arrow.png" height="30px" width="30px"> &nbsp;&nbsp;
         {{ trip.rideDestination }}
       </h3>
-      <!-- Uncomment if needed -->
-      <!-- <p><strong>Departure:</strong> {{ trip.date | date }} at {{ trip.time }}</p> -->
-      <!-- <p><strong>Available Seats:</strong> {{ trip.availableSeats }}</p> -->
+      &lt;!&ndash; Uncomment if needed &ndash;&gt;
+      &lt;!&ndash; <p><strong>Departure:</strong> {{ trip.date | date }} at {{ trip.time }}</p> &ndash;&gt;
+      &lt;!&ndash; <p><strong>Available Seats:</strong> {{ trip.availableSeats }}</p> &ndash;&gt;
+      <div class="trip-actions">
+        <button (click)="billGenerate(trip)" >Book Now</button>
+      </div>
     </div>
-    <div class="trip-actions">
-      <button (click)="billGenerate()" >Book Now</button>
+    </div>-->
+  <div class="trip-card">
+    <div class="trip-info" *ngFor="let trip of rides">
+      <div class="car-image">
+        <img src="assets/trip-car.png" alt="Car Image">
+      </div>
+      <div class="trip-details">
+        <h3>{{ trip.carName }} - {{ trip.rideSource }} → {{ trip.rideDestination }}</h3>
+        <p><strong>Departure Time:</strong> {{ trip.rideTime }}</p>
+        <p><strong>Rider Name:</strong> {{ trip.r_name }}</p>
+        <p><strong>Available Seats:</strong> {{ trip.availableSeats }}</p>
+      </div>
+      <div class="trip-actions">
+        <button (click)="billGenerate(trip)">Book Now</button>
+      </div>
     </div>
   </div>
-</div>  
 
-<div class="info-section">
+</div>
+<app-loading *ngIf="isLoading"></app-loading>
+<div *ngIf="!(rides.length > 0)" class="info-section">
   <div class="info-item">
     <img src="assets/save_money.png" alt="Low Prices">
     <h3>Your pick of rides at low prices</h3>
@@ -75,4 +93,5 @@
     <h3>Scroll, click, tap and go!</h3>
     <p>Booking a ride has never been easier! Book a ride close to you in just minutes.</p>
   </div>
+
 </div>

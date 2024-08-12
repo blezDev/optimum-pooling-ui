@@ -190,7 +190,7 @@ h2 {
   text-align: center; /* Center align text */
   align-items: center;
   font-size: 50px;
-  
+
 }
 .trip-info h3 {
   margin: 0 ; /* Space below heading */
@@ -303,5 +303,72 @@ button:hover {
 @media (max-width: 768px) {
   .dropdown-menu li {
     padding: 15px 30px; /* Larger touch targets on smaller screens */
+  }
+}
+
+
+.trip-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f7e3e8; /* Light pink background */
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car-image img {
+  width: 100px; /* Adjust size accordingly */
+  height: auto;
+}
+
+.trip-details {
+  text-align: center;
+  font-size: 16px;
+  color: #0f0c0c;
+}
+
+.trip-info {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.trip-info h3 {
+  margin: 5px 0;
+  color: #6d2e57; /* Dark pink for headings */
+  font-weight: bold;
+}
+
+.trip-actions button {
+  background-color: #6d2e57;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.trip-actions button:hover {
+  background-color: #8a2b5e;
+}
+
+@media (max-width: 768px) {
+  .trip-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .trip-details {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .car-image img {
+    margin-bottom: 10px;
   }
 }
