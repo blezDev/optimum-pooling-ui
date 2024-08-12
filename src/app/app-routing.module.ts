@@ -11,7 +11,9 @@ import { TripHistoryComponent } from './trip-history/trip-history.component';
 
 import {authGuard} from "./guards/auth.guard";
 import {reverseAuthGuard} from "./guards/reverse-auth.guard";
+import { UserridesComponent } from './userrides/userrides.component';
 const routes: Routes = [
+
   { path: 'login', component: LoginComponent  , canActivate : [reverseAuthGuard]},
   { path: 'sign-up', component: SignUpComponent ,canActivate : [reverseAuthGuard]},
   { path: 'verify', component: VerificationComponent ,canActivate : [reverseAuthGuard]},
@@ -19,9 +21,9 @@ const routes: Routes = [
   { path: 'publish', component: PublishComponent,canActivate : [authGuard] },
   {path : 'change-password', component : ChangePasswordComponent,canActivate : [authGuard]},
   { path: 'trip-history', component: TripHistoryComponent,canActivate : [authGuard] }, 
+  { path: 'user-rides', component: TripHistoryComponent,canActivate : [authGuard] }, 
   {path : 'bill', component : BillingComponent,canActivate : [authGuard]},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
-
 ];
 
 @NgModule({

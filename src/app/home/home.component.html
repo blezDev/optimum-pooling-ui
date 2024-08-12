@@ -12,6 +12,7 @@
         <img src="https://xsgames.co/randomusers/avatar.php?g=male" alt="User Image" class="user-icon" (click)="toggleDropdown()">
         <div *ngIf="showDropdown" class="dropdown-menu">
           <ul>
+            <li>My Rides</li>
             <li (click)="logout()">Log out</li>
           </ul>
         </div>
@@ -35,8 +36,8 @@
   </div>
 </div>
 
-<!--  -->
-<div class="trips-section" *ngIf="rides.length > 0" > 
+<!-- *ngIf="rides.length > 0" -->
+<div class="trips-section"  > 
   <!-- <h2><strong>Date:</strong> {{ Date.now() | date: 'MMMM dd, yyyy' }}</h2> -->
   <h1>Available Trips</h1>
 

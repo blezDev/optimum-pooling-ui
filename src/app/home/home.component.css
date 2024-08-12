@@ -144,7 +144,7 @@ body {
   max-width: 1200px; /* Limit width for large screens */
   margin: 40px auto; /* Center the section */
   padding: 20px; /* Padding around the section */
-  background-color: #f1b4d5; 
+  background-color: #eae4ff; /* Light purple background */
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
