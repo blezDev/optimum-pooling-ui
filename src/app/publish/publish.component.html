@@ -1,8 +1,77 @@
+<!-- ============================================ -->
+<!--                 Publish Ride                -->
+<!-- ============================================ -->
+
+<!--
+<section id="publish-ride">
+  <app-loading *ngIf="isLoading"></app-loading>
+
+  <div class="cs-container">
+    <div class="cs-form-group">
+      <div class="cs-content">
+        <span class="cs-topper">Plan Your Journey</span>
+        <h2 class="cs-title">Publish a Ride</h2>
+      </div>
+      <form class="cs-form" id="cs-form-ride" name="Publish Ride Form" (ngSubmit)="addRide()" [formGroup]="rideForm">
+        <label class="cs-label">
+          Ride Start *
+          <input class="cs-input" required type="text" id="ride-start" formControlName="rideSource" placeholder="Enter starting location">
+        </label>
+        <label class="cs-label">
+          Ride Destination *
+          <input class="cs-input" required type="text" id="ride-destination" formControlName="rideDestination" placeholder="Enter destination">
+        </label>
+        <label class="cs-label">
+          Date *
+          <input class="cs-input" required type="date" id="ride-date" formControlName="rideDate">
+        </label>
+        <label class="cs-label">
+          Time *
+          <input class="cs-input" required type="time" id="ride-time" formControlName="rideTime">
+        </label>
+        <label class="cs-label">
+          Car Name *
+          <input class="cs-input" required type="text" id="car-name" formControlName="carName" placeholder="Enter car name">
+        </label>
+        <label class="cs-label">
+          Car Number *
+          <input class="cs-input" required type="text" id="car-number" formControlName="carNum" placeholder="Enter car number">
+        </label>
+        <label class="cs-label">
+          Available Seats *
+          <input class="cs-input" required type="number" id="available-seats" formControlName="availableSeats" placeholder="Enter number of available seats">
+        </label>
+        <button class="cs-button-solid cs-submit" type="submit">Publish Ride</button>
+      </form>
+      
+    </div>
+    <div class="cs-info-group" >
+      <div class="cs-info" >
+        <span class="cs-topper">Plan</span>
+        <span class="cs-detail">Publish your ride details for others to join</span>
+      </div>
+      <div class="cs-info">
+        <span class="cs-topper">Manage</span>
+        <span class="cs-detail">Update or cancel your published rides easily</span>
+      </div>
+      <div class="cs-info">
+        <span class="cs-topper">Contact</span>
+        <span class="cs-detail">Get in touch with your co-passengers</span>
+      </div>
+    </div>
+  </div>
+
+</section> 
+
+
+-->
+
+
 <div class="offer-section">
   <app-loading *ngIf="isLoading"></app-loading>
-  <h2>Become a RideTribe driver and save on travel costs by sharing your ride with passengers.</h2>
+  <h2>Become a RideTribe driver and save travel costs</h2>
   <div class="offer-content">
-    <div class="offer-details">
+    <div class="offer-details" >
       <form class="ride-form" (ngSubmit)="addRide()" [formGroup]="rideForm">
         <div class="form-group">
           <label for="ride-source">Ride Source:</label>
@@ -32,11 +101,24 @@
           <label for="no-of-passengers">Number of Passengers:</label>
           <input type="number" id="no-of-passengers" name="availableSeats" placeholder="Enter number of passengers" [(ngModel)]="ride.availableSeats" min="1" max="8" formControlName="availableSeats">
         </div>
-        <button type="submit" class="publish-btn">Publish a ride</button>
+        <button type="submit" class="publish-btn" style="background-color: #6d2e57;">Publish a ride</button>
       </form>
     </div>
     <div class="offer-image">
-      <img src="assets/roadtrip.png" alt="Car with passengers" style="height: 100%; width: 100%;">
+      <div class="cs-info-group" >
+        <div class="cs-info" >
+          <span class="cs-topper">Plan</span>
+          <span class="cs-detail">Publish your ride details for others to join</span>
+        </div>
+        <div class="cs-info">
+          <span class="cs-topper">Manage</span>
+          <span class="cs-detail">Update or cancel your published rides easily</span>
+        </div>
+        <div class="cs-info">
+          <span class="cs-topper">Contact</span>
+          <span class="cs-detail">Get in touch with your co-passengers</span>
+        </div>
+      </div>
     </div>
   </div>
  

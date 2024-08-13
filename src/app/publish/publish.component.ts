@@ -37,6 +37,8 @@ export class PublishComponent {
     carName: new FormControl('', [Validators.required]),
     carNum: new FormControl('', [Validators.required]),
     availableSeats: new FormControl(0, [Validators.required]),
+    r_email: new FormControl(''),
+    r_name: new FormControl('')
   });
   constructor(private rideService: RideService, private snackBar: MatSnackBar, public dialog: MatDialog, private cookies: CookieService) { }
 
@@ -66,6 +68,7 @@ export class PublishComponent {
       // rideTime: this.formatTimeFromDate(new Date(this.ride.rideDate.setHours(this.ride.rideTime.hours, this.ride.rideTime.minutes)))
     };
 
+    console.log(formattedRide)
     this.rideService.addRide(formattedRide).subscribe(
       response => {
 

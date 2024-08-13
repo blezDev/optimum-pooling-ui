@@ -20,4 +20,9 @@ private baseUrl: string = "http://localhost:8091/ride";
     return this.http.post<Ride[]>(`${this.baseUrl}/search`, rideSearch);
   }
 
+  getUserRides(userid: number): Observable<Ride[]> {
+    return this.http.get<Ride[]>(`${this.baseUrl}/user/${userid}`);
+  }
+  
+
 }
