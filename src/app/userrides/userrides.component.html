@@ -16,13 +16,13 @@
     <h1></h1>
     <p>Oops! Seems like you haven't booked any rides yet.</p>
   </div>
-  
+
 </div> -->
 
 
 <div class="user-rides">
   <h1><b>My Rides</b></h1>
-
+  <app-loading *ngIf="isLoading"></app-loading>
   <div class="trip-card" *ngFor="let trip of userRides" >
     <div class="trip-info" *ngIf="trip" >
       <h2>{{ trip.rideDate }}</h2>
@@ -39,7 +39,7 @@
       <p>Oops! Seems like you haven't booked any rides yet.</p>
     </div>
 
-    
+
   </div>
 </div>
 

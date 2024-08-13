@@ -7,11 +7,12 @@ import { RideService } from "../services/ride/ride.service";
 import { Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import {LoadingComponent} from "../shared/loading/loading.component";
 
 @Component({
   selector: 'app-userrides',
   standalone: true,
-  imports: [CommonModule],
+    imports: [CommonModule, LoadingComponent],
   templateUrl: './userrides.component.html',
   styleUrls: ['./userrides.component.css']
 })
@@ -22,14 +23,15 @@ export class UserridesComponent implements OnInit {
 
   userRides: Ride[];
 
-  
 
+  isLoading :boolean = false;
   userId: number = Number(this.getCookies("userId"));
 
   ngOnInit(): void {
-
+      this.isLoading = true;
       this.rideSearch.getUserRides(this.userId).subscribe((data)=> {
         this.userRides = data;
+        this.isLoading = false;
         // console.log(this.userId)
         // console.log(this.userRides)
 
@@ -48,7 +50,7 @@ export class UserridesComponent implements OnInit {
         console.log('Deleted Ride:', deletedRide);
         this.showMessage("Ride deleted successfully");
 
-        
+
         window.location.reload(); // Or this.router.navigate([this.router.url]);
       },
       error: (error: HttpErrorResponse) => {
