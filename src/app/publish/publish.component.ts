@@ -6,6 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-publish',
@@ -40,7 +41,7 @@ export class PublishComponent {
     r_email: new FormControl(''),
     r_name: new FormControl('')
   });
-  constructor(private rideService: RideService, private snackBar: MatSnackBar, public dialog: MatDialog, private cookies: CookieService) { }
+  constructor(private rideService: RideService, private snackBar: MatSnackBar, public dialog: MatDialog, private cookies: CookieService, private router: Router) { }
 
 
   showMessage(message: string) {
@@ -73,8 +74,11 @@ export class PublishComponent {
       response => {
 
         this.showMessage("Ride added successfully");
+        this.router.navigate(['/user-rides'], {replaceUrl: false});
+
         console.log(formattedRide)
         this.isLoading = false;
+        
 
       },
       error => {

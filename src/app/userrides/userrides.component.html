@@ -3,12 +3,13 @@
 
   <div class="trip-card" *ngFor="let trip of userRides">
     <div class="trip-info" >
-      <h2>15th August, 2024 </h2>
-      <h3 style="margin-left: 200px;">{{ trip.rideSource }}</h3>
+      <h2>{{ trip.rideDate }}</h2>
+      <h3 style="margin-left: 200px;">{{ trip.carName }}</h3>
       <h3 style="margin-left: 280px;">
         <img src="assets/trip-car.png" [align]="'left'" height="50px" width="50px">
         &nbsp;&nbsp; {{trip.rideSource}} &nbsp;&nbsp; <img src="assets/arrow.png" height="30px" width="30px"> &nbsp;&nbsp; {{trip.rideDestination}}
       </h3>
+      <button type="submit" (click) = "onDeleteRide(trip.rideId)">Cancel</button>
     </div>
   </div>
 </div>

@@ -16,8 +16,7 @@
   }
   
   .trip-card {
-    display: flex; /* Use flexbox for horizontal layout */
-    justify-content: space-between; /* Space between trip info and button */
+    justify-content: space-between; 
     align-items: center; /* Align items vertically */
     border-radius: 8px; /* Rounded corners */
     padding: 40px; /* Padding inside cards */
@@ -30,11 +29,13 @@
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
-  .trip-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+
+.trip-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+
   
   .trip-info h2 {
     margin: 0;
@@ -59,3 +60,28 @@
     margin-left: 10px;
   }
   
+
+
+  button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #ff3333;
+  }
+  
+  button:active {
+    background-color: #e60000;
+  }
+  
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 77, 77, 0.8);
+  }
