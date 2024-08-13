@@ -9,8 +9,8 @@ import { ConfigService } from '../configs/config.service';
 })
 export class RideService {
 
-  // private baseUrl = `${this.configService.getBaseUrl()}/ride-service/ride`;
-  private baseUrl = "http://localhost:8091/ride";
+  private baseUrl = `${this.configService.getBaseUrl()}/ride-service/ride`;
+  //private baseUrl = "http://localhost:8091/ride";
 
 
   constructor(private http: HttpClient,private configService: ConfigService) { }
@@ -40,5 +40,5 @@ export class RideService {
     const url = `${this.baseUrl}/delete/${id}`;
     return this.http.delete<Ride>(url);
   }
-  
+
 }

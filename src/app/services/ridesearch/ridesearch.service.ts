@@ -10,7 +10,8 @@ import { ConfigService } from '../configs/config.service';
 })
 export class RidesearchService {
 
-private baseUrl: string = "http://localhost:8091/ride";
+  private baseUrl = `${this.configService.getBaseUrl()}/ride-service/ride`;
+// private baseUrl: string = "http://localhost:8091/ride";
 
  // private baseUrl = `${this.configService.getBaseUrl()}/ride-service/ride`;
 
@@ -23,6 +24,6 @@ private baseUrl: string = "http://localhost:8091/ride";
   getUserRides(userid: number): Observable<Ride[]> {
     return this.http.get<Ride[]>(`${this.baseUrl}/user/${userid}`);
   }
-  
+
 
 }
