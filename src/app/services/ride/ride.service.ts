@@ -35,4 +35,10 @@ export class RideService {
   searchRides(searchRequest: any): Observable<Ride[]> {
     return this.http.post<Ride[]>(`${this.baseUrl}/search`, searchRequest);
   }
+
+  deleteRide(id: number): Observable<Ride> {
+    const url = `${this.baseUrl}/delete/${id}`;
+    return this.http.delete<Ride>(url);
+  }
+  
 }
