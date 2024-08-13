@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiServiceService } from '../services/remote/api-service.service';
 import { Router } from '@angular/router';
 import { VerificationComponent } from '../verification/verification.component';
+import {emailDomainValidator} from "../shared/EmailValidator";
 
 @Component({
   selector: 'app-forget-password',
@@ -18,7 +19,7 @@ export class ForgetPasswordComponent {
     uiState: UIState = UIState.Login;
   isLoading :boolean = false;
     forgotPasswordForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [Validators.required, Validators.email,emailDomainValidator()]),
     })
     state: ResultState<string> | null = null;
 

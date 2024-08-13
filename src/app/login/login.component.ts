@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
 import { CookieService } from 'ngx-cookie-service';
 import { AuthResponseModel } from '../shared/ResponseModel';
 import {GoogleLoginProvider, SocialAuthService, SocialUser} from "@abacritt/angularx-social-login";
+import {emailDomainValidator} from "../shared/EmailValidator";
 
 @Component({
   selector: 'app-login',
@@ -39,8 +40,8 @@ export class LoginComponent implements OnInit{
   uiState: UIState = UIState.Login;
   isLoading :boolean = false;
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required])
+    email: new FormControl(null, [Validators.required, Validators.email,emailDomainValidator()]),
+    password: new FormControl(null, [Validators.required])
   });
 
   state: ResultState<AuthResponseModel> | null = null;
@@ -99,13 +100,41 @@ export class LoginComponent implements OnInit{
         } else {
           this.isLoading = false;
           console.log(result)
-          this.showMessage(result.message ?? "Failed to log in");
+
         }
       })
 
 
     } else {
-      this.showMessage("Please fill the required fields.");
+      const emailErrors = this.loginForm.get('email').errors;
+      const passwordErrors = this.loginForm.get('password').errors;
+      if ((this.loginForm.value.email === "" || this.loginForm.value.email === null) && (this.loginForm.value.password === "" || this.loginForm.value.password === null) ) {
+        this.showMessage('Please fill all required fields');
+      }else{
+        console.log("Called");
+        if (emailErrors) {
+          if (this.loginForm.value.email === "" || this.loginForm.value.email === null) {
+            this.showMessage('Error: Email is required.');
+          } else if (emailErrors['email']) {
+            this.showMessage('Error: Enter a valid email address.');
+          } else if (this.loginForm.get('email').errors['invalidDomain']) {
+            this.showMessage('Error: Email must end properly with a domain like .com, .net, etc.');
+          }
+        }
+
+        if (passwordErrors) {
+          if (this.loginForm.value.password === "" || this.loginForm.value.password === null) {
+            this.showMessage('Error: Password is required.');
+          }
+        }
+
+
+      }
+
+
+
+
+      // this.showMessage("Please fill the required fields.");
     }
   }
 

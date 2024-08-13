@@ -12,7 +12,7 @@
         <img src="https://xsgames.co/randomusers/avatar.php?g=male" alt="User Image" class="user-icon" (click)="toggleDropdown()">
         <div *ngIf="showDropdown" class="dropdown-menu">
           <ul>
-            <li>My Rides</li>
+            <li (click)="navigateToRidesHistory()">My Rides</li>
             <li (click)="navigateToTripHistory()" >My Trips</li>
             <li (click)="logout()">Log out</li>
           </ul>

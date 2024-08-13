@@ -124,3 +124,12 @@
 }
 
 
+.input-group input.error {
+  border: 1px solid red;
+}
+
+.input-group .error-message {
+  color: red;
+  font-size: 8px;
+  margin-top: 5px;
+}

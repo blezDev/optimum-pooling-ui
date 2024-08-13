@@ -8,13 +8,19 @@
   </div>
 
   <div class="login-right">
-
+    <div class="logo">
+      <img src="assets/pool_logo.png" alt="RideTribe Logo">
+      <span>RideTribe</span>
+    </div>
+    <br>
+    <br>
 <!--    <script src="https://accounts.google.com/gsi/client" async></script>-->
    <ng-container [ngSwitch]="uiState" >
 
       <!-- <app-forget-password @fadeSlideInOut></app-forget-password> -->
       <div *ngSwitchCase="UIState.Login">
         <form @fadeSlideInOut  [formGroup]="loginForm">
+
           <h2 class="divider">Login to your Account</h2>
           <!--<p>See what's going on with your business</p>-->
 <!--          <button class="google-login" (click)="loginWithGoogle()">-->
@@ -27,14 +33,16 @@
           </asl-google-signin-button>
           <div class="divider">or</div>
 
-          <div class="input-group">
+          <div class="input-group"  [class.error]="loginForm.get('email').invalid && loginForm.get('email').touched">
             <label for="email">Email</label>
-            <input type="email" id="email" formControlName="email" placeholder="xyz@gamil.com" />
+            <input type="email" id="email" formControlName="email" placeholder="xyz@gamil.com"    [class.error]="loginForm.get('email').invalid && loginForm.get('email').touched" />
+
+
 
           </div>
-          <div class="input-group">
+          <div class="input-group"  [class.error]="loginForm.get('password').invalid && loginForm.get('password').touched">
             <label for="password">Password</label>
-            <input type="password" id="password" placeholder="********" formControlName="password" />
+            <input type="password" id="password" placeholder="********" formControlName="password" [class.error]="loginForm.get('password').invalid && loginForm.get('password').touched" />
           </div>
           <div class="remember-forgot">
             <label style="visibility: hidden"><input type="checkbox"/> Remember me</label>

@@ -12,27 +12,28 @@ import {Router} from "@angular/router";
 
 import {GoogleLoginProvider, SocialAuthService} from "@abacritt/angularx-social-login";
 import {CookieService} from "ngx-cookie-service";
+import {emailDomainValidator} from "../shared/EmailValidator";
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent{
+export class SignUpComponent {
   constructor(private toggleModeService: ToggleModeService,
               public dialog: MatDialog,
               private snackBar: MatSnackBar,
               private apiService: ApiServiceService,
               private router: Router,
               private cookies: CookieService,
-
   ) {
 
   }
 
-  setCookies(key : string, value : string) {
+  setCookies(key: string, value: string) {
     this.cookies.set(key, value);
   }
+
   // ngOnInit(): void {
   //
   //   this.socialAuthService.authState.subscribe((user) => {
@@ -62,19 +63,17 @@ export class SignUpComponent{
   // }
 
 
-
-
   isLoading: boolean = false;
   signup = new FormGroup({
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
+    firstName: new FormControl(null, [Validators.required,Validators.pattern(/^[a-zA-Z\s]+$/)]),
+    lastName: new FormControl(null, [Validators.required,Validators.pattern(/^[a-zA-Z\s]+$/)]),
     phoneNumber: new FormControl(null, [
       Validators.required,
       Validators.minLength(10),
       Validators.maxLength(10)
     ]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required])
+    email: new FormControl(null, [Validators.required, Validators.email,emailDomainValidator()]),
+    password: new FormControl(null, [Validators.required])
   });
   state: ResultState<string> | null = null;
 
@@ -95,7 +94,52 @@ export class SignUpComponent{
       })
 
     } else {
-      this.showMessage("Please fill the required fields.");
+      const controls = this.signup.controls;
+      const formData = this.signup.value;
+      if ((formData.firstName === null || formData.firstName === "") && (formData.lastName === null || formData.firstName === "") && (formData.email === null || formData.email === "") && (formData.password === null || formData.password === "") && (formData.phoneNumber === null || formData.phoneNumber === "")) {
+        this.showMessage("Please fill all fields.");
+      }
+
+
+      if (controls['firstName'].invalid) {
+        if (controls['firstName'].errors?.['required']) {
+          this.showMessage("First Name is required.");
+        } else if (controls['firstName'].errors?.['pattern']) {
+          this.showMessage("Enter a valid First Name.");
+        }
+      }
+
+      if (controls['lastName'].invalid) {
+        if (controls['lastName'].errors?.['required']) {
+          this.showMessage("Last Name is required.");
+        } else if (controls['lastName'].errors?.['pattern']) {
+          this.showMessage("Enter a valid Last Name.");
+        }
+      }
+
+      if (controls['email'].invalid) {
+        if (controls['email'].errors?.['required']) {
+          this.showMessage("Email is required.");
+        } else if (controls['email'].errors?.['email']) {
+          this.showMessage("Enter a valid email.");
+        }
+      }
+
+      if (controls['password'].invalid) {
+        if (controls['password'].errors?.['required']) {
+          this.showMessage("Password is required.");
+        }
+      }
+
+      if (controls['phoneNumber'].invalid) {
+        if (controls['phoneNumber'].errors?.['required']) {
+          this.showMessage("Phone Number is required.");
+        } else if (controls['phoneNumber'].errors?.['pattern']) {
+          this.showMessage("Enter a valid Phone Number (10 digits).");
+        }
+      }
+
+
     }
   }
 
@@ -117,7 +161,7 @@ export class SignUpComponent{
     const {firstName, lastName, phoneNumber, password} = this.signup.value;
     dialogRef.afterClosed().subscribe((isVerified: boolean = false) => {
       if (isVerified) {
-        this.apiService.SignUpEvent(firstName, lastName, email, password,phoneNumber).subscribe(result => {
+        this.apiService.SignUpEvent(firstName, lastName, email, password, phoneNumber).subscribe(result => {
           this.state = result;
           if (result instanceof Success) {
             console.log(result)

@@ -26,6 +26,7 @@ export class UserridesComponent implements OnInit {
   userId: number = Number(this.getCookies("userId"));
 
   ngOnInit(): void {
+
       this.rideSearch.getUserRides(this.userId).subscribe((data)=> {
         this.userRides = data;
         // console.log(this.userId)
@@ -47,8 +48,8 @@ export class UserridesComponent implements OnInit {
       }
     });
   }
-  
-  
+
+
 
   setCookies(key : string, value : string) {
     this.cookies.set(key, value);
@@ -56,6 +57,6 @@ export class UserridesComponent implements OnInit {
   getCookies(key : string) {
     return this.cookies.get(key);
   }
-  
+
 
 }
