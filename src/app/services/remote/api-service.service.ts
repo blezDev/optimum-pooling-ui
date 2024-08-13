@@ -95,10 +95,10 @@ export class ApiServiceService {
     )
   }
 
-  BookTrip(c_userId : string, c_name : string,c_email : string,rideSource : string,rideDestination : string,rideDate : string,fare : string,carName : string,carNumber : string,r_email : string,r_userId : string,seatsOccupied : string ): Observable<ResultState<string>> {
+  BookTrip(c_userId : string, c_name : string,c_email : string,rideSource : string,rideDestination : string,rideDate : string,fare : string,carName : string,carNumber : string,r_email : string,r_userId : string,seatsOccupied : string ,r_name : string): Observable<ResultState<string>> {
     const logUrl = `${this.configService.getBaseUrl()}/trip-service/trip/createTrip`;
     // const logUrl = `http://localhost:9090/bill/trip`;
-    return this.http.post<ResponseModel>(logUrl,{c_userId : c_userId, c_name : c_name,c_email : c_email,rideSource : rideSource,rideDestination : rideDestination,rideDate : rideDate,fare : fare,carName : carName,carNumber : carNumber,r_email : r_email,r_userId : r_userId,seatsOccupied : seatsOccupied }).pipe(
+    return this.http.post<ResponseModel>(logUrl,{c_userId : c_userId, c_name : c_name,c_email : c_email,rideSource : rideSource,rideDestination : rideDestination,rideDate : rideDate,fare : fare,carName : carName,carNumber : carNumber,r_email : r_email,r_userId : r_userId,seatsOccupied : seatsOccupied,r_name : r_name }).pipe(
       map(response => new Success<string>( response.message)),
       catchError((error: HttpErrorResponse) => {
         const message = error.error?.message || error.message || 'An error occurred';

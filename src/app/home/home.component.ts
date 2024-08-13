@@ -159,6 +159,9 @@ navigateToUserRides(){
         (data: Ride[]) => {
           this.isLoading = false;
           this.rides = data;
+          if (data.length <=0){
+            this.showMessage("No Trip Available.");
+          }
           this.errorMessage = null;
           console.log(this.rides)
         },

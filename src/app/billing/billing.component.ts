@@ -54,7 +54,7 @@ export class BillingComponent implements OnInit {
     this.isLoading = true;
     console.log(this.billingData.c_userId, this.billingData.name, this.billingData.c_email, this.billingData.startDestination, this.billingData.endDestination, this.billingData.rideDate, this.billingData.fare, this.billingData.carModel, this.billingData.carNumber, this.billingData.r_email, this.billingData.r_userId, this.billingData.numberOfPassengers);
     this.apiService.BookTrip(
-      this.billingData.c_userId, this.billingData.name, this.billingData.c_email, this.billingData.startDestination, this.billingData.endDestination, this.billingData.rideDate, this.billingData.fare, this.billingData.carModel, this.billingData.carNumber, this.billingData.r_email, this.billingData.r_userId, this.billingData.numberOfPassengers
+      this.billingData.c_userId, this.billingData.name, this.billingData.c_email, this.billingData.startDestination, this.billingData.endDestination, this.billingData.rideDate, this.billingData.fare, this.billingData.carModel, this.billingData.carNumber, this.billingData.r_email, this.billingData.r_userId, this.billingData.numberOfPassengers, this.billingData.r_name
     ).subscribe(result => {
       if (result instanceof Success) {
         this.isLoading = false;
