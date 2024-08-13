@@ -1,0 +1,88 @@
+body {
+    
+    font-family: 'Arial', sans-serif;
+    background-color: aliceblue;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    position: relative; /* Set position for absolute children */
+    text-align: center;
+    background-color: transparent;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    width: 90%;
+    max-width: 600px;
+    transition: transform 0.3s;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    color: #6d2e57;
+}
+
+img {
+    border-radius: 15px;
+    margin-bottom: 15px;
+    width: 50%; /* Make the image responsive */
+    height: 100%; /* Maintain aspect ratio */
+    max-height: 220px; /* Optional: Limit max height */
+    transition: transform 0.3s;
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+.dialogue-box {
+    
+    background-color: lightgrey;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 22px;
+    transition: background-color 0.3s;
+    width: 100%; /* Stretch to fit the container */
+}
+
+.dialogue-box:hover {
+    background-color: #e7c6d5;
+}
+
+h2 {
+    flex: auto;
+    font-size: 30px;
+    font-style: bold;
+    color: #6d2e57;
+    margin-top: 15px;
+    transition: color 0.3s;
+}
+
+p:hover {
+    color: #333;
+}
+
+/* Additional decorative styles */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1; /* Adjust opacity to make it subtle */
+    border-radius: 15px;
+    z-index: -1; /* Place it behind the content */
+}
