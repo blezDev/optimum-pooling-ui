@@ -21,8 +21,9 @@ const routes: Routes = [
   { path: 'publish', component: PublishComponent,canActivate : [authGuard] },
   {path : 'change-password', component : ChangePasswordComponent,canActivate : [authGuard]},
   { path: 'trip-history', component: TripHistoryComponent,canActivate : [authGuard] }, 
-  { path: 'user-rides', component: TripHistoryComponent,canActivate : [authGuard] }, 
+  { path: 'user-rides', component: UserridesComponent,canActivate : [authGuard] }, 
   {path : 'bill', component : BillingComponent,canActivate : [authGuard]},
+  
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
