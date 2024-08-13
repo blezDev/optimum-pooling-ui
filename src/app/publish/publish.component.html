@@ -66,11 +66,13 @@
 
 -->
 
-<div style="background-color: aliceblue; width: 1540px; height: 800px;">
+<div style="background-color: aliceblue; width: 1530px; height: 759px;">
   <img src="../../assets/pool_logo.png" style="width: 0.1px; height: 0.5px; margin-top: 45px; margin-left: 160px;">
   <div class="offer-section">
     <app-loading *ngIf="isLoading"></app-loading>
-    <h2>Become a RideTribe driver and save travel costs</h2>
+    <h2>
+      <img src="../../assets/pool_logo.png" style="width: 75px; height: 75px;">
+      Become a RideTribe driver and save travel costs</h2>
     <div class="offer-content">
       <div class="offer-details" >
         <form class="ride-form" (ngSubmit)="addRide()" [formGroup]="rideForm">
@@ -109,15 +111,15 @@
         <div class="cs-info-group" >
           <div class="cs-info" >
             <span class="cs-topper">Plan</span>
-            <span class="cs-detail">Publish your ride details for others to join</span>
+            <span class="cs-detail">Publish your ride & Let others join</span>
           </div>
           <div class="cs-info">
-            <span class="cs-topper">Manage</span>
-            <span class="cs-detail">Update or cancel your published rides easily</span>
+            <span class="cs-topper">Easy Cancellation</span>
+            <span class="cs-detail">Cancel your published rides easily</span>
           </div>
           <div class="cs-info">
-            <span class="cs-topper">Contact</span>
-            <span class="cs-detail">Get in touch with your co-passengers</span>
+            <span class="cs-topper">Save Money</span>
+            <span class="cs-detail">Share your car & Save your money</span>
           </div>
         </div>
       </div>

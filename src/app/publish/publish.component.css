@@ -175,7 +175,7 @@ body {
   padding: 30px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  margin: 60px 60px; /* optional: keeps some space around the section */
+  /* margin: 60px 60px; optional: keeps some space around the section */
   margin-left: 150px;
 }
 
@@ -183,6 +183,7 @@ body {
 .offer-content {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 30px;
   gap: 30px;
 }
 
@@ -300,7 +301,7 @@ h2 {
 }
 
 .cs-info .cs-detail {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 /* Responsive Design */
