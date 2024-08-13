@@ -12,17 +12,18 @@
         <img src="https://xsgames.co/randomusers/avatar.php?g=male" alt="User Image" class="user-icon" (click)="toggleDropdown()">
         <div *ngIf="showDropdown" class="dropdown-menu">
           <ul>
-            <li (click)="navigateToRidesHistory()">My Rides</li>
-            <li (click)="navigateToTripHistory()" >My Trips</li>
-            <li (click)="logout()">Log out</li>
+            <li (click)="navigateToUserRides()" style="color: #6d2e57;">My Rides</li>
+            <li (click)="navigateToTripHistory()" style="color: #6d2e57;" >My Trips</li>
+            <li (click)="logout()" style="color: #6d2e57;">Log out</li>
           </ul>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <div class="main-banner">
+<img src="../../assets/car-carousel.jpg" style="height: 400px; width: 800px;" />
+
   <div class="banner-content">
     <h1>Choose Your Ride</h1>
     <form class="search-bar"  [formGroup]="ride">

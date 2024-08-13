@@ -138,9 +138,11 @@ navigateToTripHistory(){
   this.router.navigate(['/trip-history'], {replaceUrl: false});
 }
 
-  navigateToRidesHistory(){
-    this.router.navigate(['/user-rides'], {replaceUrl: false});
-  }
+navigateToUserRides(){
+  this.router.navigate(['/user-rides'], {replaceUrl: false});
+}
+
+
   onSearch() {
 
     if (this.ride.valid){

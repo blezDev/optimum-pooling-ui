@@ -6,6 +6,7 @@ import { CommonModule } from "@angular/common";
 import { RideService } from "../services/ride/ride.service";
 import { Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-userrides',
@@ -15,13 +16,13 @@ import { HttpErrorResponse } from "@angular/common/http";
   styleUrls: ['./userrides.component.css']
 })
 export class UserridesComponent implements OnInit {
-  constructor(private rideSearch: RidesearchService, private cookies: CookieService, private rideService: RideService,private router: Router) {
+  constructor(private rideSearch: RidesearchService, private cookies: CookieService, private rideService: RideService,private router: Router, private snackBar: MatSnackBar) {
 
   }
 
   userRides: Ride[];
 
-  R
+  
 
   userId: number = Number(this.getCookies("userId"));
 
@@ -35,11 +36,19 @@ export class UserridesComponent implements OnInit {
       } );
   }
 
+  showMessage(message: string) {
+    this.snackBar.open(message, 'Close', {
+      duration: 3000,
+    });
+  }
+
   onDeleteRide(id: number): void {
     this.rideService.deleteRide(id).subscribe({
       next: (deletedRide) => {
         console.log('Deleted Ride:', deletedRide);
-        alert(`Ride from ${deletedRide.rideSource} to ${deletedRide.rideDestination} deleted successfully`);
+        this.showMessage("Ride deleted successfully");
+
+        
         window.location.reload(); // Or this.router.navigate([this.router.url]);
       },
       error: (error: HttpErrorResponse) => {
