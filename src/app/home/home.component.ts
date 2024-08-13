@@ -135,7 +135,7 @@ billGenerate(trip : Ride){
 }
 
 navigateToTripHistory(){
-  this.router.navigate(['/trip-history'], {replaceUrl: true});
+  this.router.navigate(['/trip-history'], {replaceUrl: false});
 }
 
 
