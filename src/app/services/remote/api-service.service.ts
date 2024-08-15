@@ -6,6 +6,7 @@ import {ResultState, Error,Success} from "../../shared/ResultState";
 import {AuthResponseModel, ResponseModel} from "../../shared/ResponseModel";
 import {FetchModel} from "../../billing/FetchModel";
 import {TripModel} from "../../trip-history/TripModel";
+import {Cities} from "../../home/Cities";
 
 @Injectable({
   providedIn: 'root'
@@ -118,4 +119,16 @@ export class ApiServiceService {
       })
     )
   }
+  GetCities(): Observable<ResultState<Cities[]>> {
+    const logUrl = `${this.configService.getBaseUrl()}/billing-service/bill/getAllCities`;
+    // const logUrl = `http://localhost:9090/bill/trip`;
+    return this.http.get<Cities[]>(logUrl,{}).pipe(
+      map(response => new Success<Cities[]>(response)),
+      catchError((error: HttpErrorResponse) => {
+        const message = error.error?.message || error.message || 'An error occurred';
+        return of(new Error<Cities[]>(message));
+      })
+    )
+  }
+
 }

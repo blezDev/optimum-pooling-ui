@@ -27,8 +27,20 @@
   <div class="banner-content">
     <h1>Choose Your Ride</h1>
     <form class="search-bar"  [formGroup]="ride">
-      <input type="text" placeholder="Leaving from"  formControlName="rideSource">
-      <input type="text" placeholder="Going to" formControlName="rideDestination" >
+
+      <input type="text" placeholder="Leaving from"  formControlName="rideSource" [matAutocomplete]="auto1"    matInput >
+        <mat-autocomplete #auto1="matAutocomplete">
+          <mat-option *ngFor="let city of filteredSourceCities | async" [value]="city">
+            {{ city }}
+          </mat-option>
+        </mat-autocomplete>
+
+      <input type="text" placeholder="Going to" formControlName="rideDestination" [matAutocomplete]="auto2"    matInput  >
+      <mat-autocomplete #auto2="matAutocomplete">
+        <mat-option *ngFor="let city of filteredDestinationCities | async" [value]="city">
+          {{ city }}
+        </mat-option>
+      </mat-autocomplete>
       <input matInput [matDatepicker]="picker" readonly [min]="minDate" class="custom-field" placeholder="Choose a date"  formControlName="rideDate" >
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>

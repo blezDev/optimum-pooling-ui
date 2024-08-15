@@ -29,6 +29,7 @@ import {
   SocialAuthServiceConfig,
   SocialLoginModule
 } from "@abacritt/angularx-social-login";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 
 @NgModule({
@@ -42,28 +43,29 @@ import {
     HomeComponent,
     PublishComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    FormsModule,
-    MatRippleModule,
-    BrowserAnimationsModule,
-    MatDialogModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    NgOptimizedImage,
-    MatSnackBarModule,
-    HttpClientModule,
-    NgxOtpInputComponent,
-    LoadingComponent,
-    MatNativeDateModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatInputModule,
-    SocialLoginModule,
-    GoogleSigninButtonModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgbModule,
+        FormsModule,
+        MatRippleModule,
+        BrowserAnimationsModule,
+        MatDialogModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        NgOptimizedImage,
+        MatSnackBarModule,
+        HttpClientModule,
+        NgxOtpInputComponent,
+        LoadingComponent,
+        MatNativeDateModule,
+        MatFormFieldModule,
+        MatDatepickerModule,
+        MatInputModule,
+        SocialLoginModule,
+        GoogleSigninButtonModule,
+        MatAutocompleteModule
+    ],
   providers: [{
     provide: 'SocialAuthServiceConfig',
     useValue : {
