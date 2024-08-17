@@ -1,6 +1,6 @@
 <div class="verification-container">
-  <h2>Verify Your Account</h2>
-  <p>Please enter the verification code sent to your email</p>
+  <h2>{{ 'VERIFY_ACCOUNT' | translate }}</h2>
+  <p>{{ 'ENTER_VERIFICATION_CODE' | translate }}</p>
 
   <form (ngSubmit)="onSubmit()">
     <ngx-otp-input
@@ -8,9 +8,9 @@
       class="otp-inputs"
       (otpChange)="onOtpChange($event)"
     ></ngx-otp-input>
-    <button type="submit" class="verify-btn">Verify</button>
+    <button type="submit" class="verify-btn">{{ 'VERIFY_BUTTON' | translate }}</button>
   </form>
   <br>
-  <p>If you did not receive a code, <a href="javascript:void(0);" (click)="resendCode()">Resend Code</a></p>
+  <p>{{ 'DID_NOT_RECEIVE_CODE' | translate }} <a href="javascript:void(0);" (click)="resendCode()">{{ 'RESEND_CODE' | translate }}</a></p>
 </div>
 <app-loading *ngIf="isLoading"></app-loading>

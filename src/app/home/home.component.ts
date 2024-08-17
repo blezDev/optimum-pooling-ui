@@ -101,10 +101,10 @@ export class HomeComponent implements OnInit {
 
     const {rideDestination, rideSource, availableSeats} = this.ride.value;
     const name = this.getCookies("firstName") + " " + this.getCookies("lastName");
-    this.apiService.TripBill(rideSource, rideDestination, Number(availableSeats), 14, name).subscribe(result => {
+    this.apiService.TripBill(rideSource, rideDestination, Number(availableSeats), Number(trip.fare), name).subscribe(result => {
       if (result instanceof Success) {
         this.isLoading = false;
-
+        console.log(Number(trip.fare));
         const data = result.data as FetchModel;
         console.log(data);
         const sampleBilling: any = {
@@ -131,6 +131,7 @@ export class HomeComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
           console.log('The dialog was closed', result);
+          this.refreshRides(); // Call refresh method here
         });
       } else {
         this.isLoading = false;
@@ -141,6 +142,33 @@ export class HomeComponent implements OnInit {
 
   }
 
+
+  refreshRides(){
+    const rideSearch: RideSearch = {
+      rideSource: this.ride.get('rideSource')?.value,
+      rideDestination: this.ride.get('rideDestination')?.value,
+      rideDate: this.formatDateForBackend(this.ride.get('rideDate')?.value),
+      availableSeats: this.ride.get('availableSeats')?.value,
+    };
+
+    this.rideSearchService.searchRides(rideSearch).subscribe(
+      (data: Ride[]) => {
+        this.isLoading = false;
+        this.rides = data;
+        if (data.length <= 0) {
+          this.showMessage("No Trip Available.");
+        }
+        this.errorMessage = null;
+        console.log(this.rides);
+      },
+      (error) => {
+        this.isLoading = false;
+        this.errorMessage = 'An error occurred while searching for rides.';
+        console.error(error);
+      }
+    );
+  }
+
   navigateToTripHistory() {
     this.router.navigate(['/trip-history'], {replaceUrl: false});
   }
@@ -149,16 +177,22 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/user-rides'], {replaceUrl: false});
   }
 
-  cities: string[];
+  start_cities: string[];
+  end_cities: string[];
 
   filteredSourceCities: Observable<string[]>;
   filteredDestinationCities: Observable<string[]>;
 
-  private _filter(value: string): string[] {
+  private _filter1(value: string): string[] {
     const filterValue = value.toLowerCase();
-    return this.cities.filter(city => city.toLowerCase().includes(filterValue));
+    return this.start_cities.filter(city => city.toLowerCase().includes(filterValue));
   }
 
+
+  private _filter2(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.end_cities.filter(city => city.toLowerCase().includes(filterValue));
+  }
   ngOnInit(): void {
     this.isLoading = true;
     this.apiService.GetCities().subscribe(result => {
@@ -166,10 +200,12 @@ export class HomeComponent implements OnInit {
         this.isLoading = false;
         const data = result.data as Cities[];
         console.log(data);
-        this.cities = [...new Set(data.map((city) => {
+        this.start_cities = [...new Set(data.map((city) => {
           return city.startCity
         }))];
-
+        this.end_cities = [...new Set(data.map((city) => {
+          return city.endCity
+        }))];
       } else {
         this.isLoading = false;
         console.log("No data");
@@ -178,12 +214,12 @@ export class HomeComponent implements OnInit {
       this.filteredSourceCities = this.ride.get('rideSource').valueChanges
         .pipe(
           startWith(''),
-          map(value => this._filter(value || ''))
+          map(value => this._filter1(value || ''))
         );
       this.filteredDestinationCities = this.ride.get('rideDestination').valueChanges
         .pipe(
           startWith(''),
-          map(value => this._filter(value || ''))
+          map(value => this._filter2(value || ''))
         );
 
     });
@@ -198,12 +234,12 @@ export class HomeComponent implements OnInit {
     if (this.ride.valid) {
 
       const source = this.ride.get('rideSource')?.value;
-      if (source != null && !this.cities.includes(source)) {
+      if (source != null && !this.start_cities.includes(source)) {
         this.showMessage("Please Enter a city from the list for source.");
         return;
       }
       const end = this.ride.get('rideDestination')?.value;
-      if (end != null && !this.cities.includes(end)) {
+      if (end != null && !this.end_cities.includes(end)) {
         this.showMessage("Please enter a city from the list for destination.");
         return;
       }
@@ -245,7 +281,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  shou
+
 
   private formatDateForBackend(date: Date): string {
     // Format date to 'dd-MM-yyyy'

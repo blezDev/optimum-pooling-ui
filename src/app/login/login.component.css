@@ -39,7 +39,7 @@
   display: block;
   height: auto;
   margin: auto;
-
+  max-height: 80%;
   max-width: 100%;
   flex-grow: 1;
 }
@@ -51,7 +51,8 @@
 
 .login-left p {
   color: #8a2b5e;
-  padding-bottom: 30px;
+  padding-bottom: 80px;
+
 }
 
 .login-right {

@@ -7,6 +7,7 @@ import {AuthResponseModel, ResponseModel} from "../../shared/ResponseModel";
 import {FetchModel} from "../../billing/FetchModel";
 import {TripModel} from "../../trip-history/TripModel";
 import {Cities} from "../../home/Cities";
+import {CarModel} from "../../publish/CarModels";
 
 @Injectable({
   providedIn: 'root'
@@ -130,5 +131,15 @@ export class ApiServiceService {
       })
     )
   }
-
+  GetCarModels(): Observable<ResultState<CarModel[]>> {
+    const logUrl = `${this.configService.getBaseUrl()}/ride-service/ride/cars/getAll`;
+    // const logUrl = `http://localhost:9090/bill/trip`;
+    return this.http.get<CarModel[]>(logUrl,{}).pipe(
+      map(response => new Success<CarModel[]>(response)),
+      catchError((error: HttpErrorResponse) => {
+        const message = error.error?.message || error.message || 'An error occurred';
+        return of(new Error<CarModel[]>(message));
+      })
+    )
+  }
 }

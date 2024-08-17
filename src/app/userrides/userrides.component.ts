@@ -8,11 +8,12 @@ import { Router } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import {LoadingComponent} from "../shared/loading/loading.component";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-userrides',
   standalone: true,
-    imports: [CommonModule, LoadingComponent],
+  imports: [CommonModule, LoadingComponent, TranslateModule],
   templateUrl: './userrides.component.html',
   styleUrls: ['./userrides.component.css']
 })

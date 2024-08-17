@@ -1,0 +1,131 @@
+{
+  "Turn your rides into trips": "अपने सवारी को यात्राओं में बदलें",
+  "Start for free and start your journey": "मुफ्त में शुरू करें और अपनी यात्रा शुरू करें",
+  "RideTribe": "राइडट्राइब",
+  "Login to your Account": "अपने खाते में लॉग इन करें",
+  "or": "या",
+  "Email": "ईमेल",
+  "Forgot Password?": "पासवर्ड भूल गए?",
+  "Not Registered Yet?": "अभी तक पंजीकृत नहीं हुए ?",
+  "Create an account": "खाता बनाएं",
+  "Password" : "पासवर्ड",
+
+  "CREATE_ACCOUNT": "खाता बनाएं",
+  "JOIN_US": "यात्रा शुरू करने के लिए हमारे साथ जुड़ें",
+  "FIRST_NAME": "पहला नाम",
+  "LAST_NAME": "अंतिम नाम",
+  "EMAIL": "xyz@gmail.com",
+  "PASSWORD": "********",
+  "PHONE_NUMBER": "फोन नंबर",
+  "SIGN_UP": "साइन अप",
+  "LOGIN_HERE": "यहां लॉगिन करें",
+  "ALREADY_HAVE_ACCOUNT": "पहले से एक खाता है?",
+
+  "FORGOT_PASSWORD": "पासवर्ड भूल गए",
+  "ENTER_EMAIL": "कृपया अपना ईमेल दर्ज करें ताकि आपको एक सत्यापन कोड प्राप्त हो सके।",
+
+  "ENTER_YOUR_EMAIL": "अपना ईमेल दर्ज करें",
+  "SEND_VERIFICATION_CODE": "सत्यापन कोड भेजें",
+  "CANCEL": "रद्द करें",
+
+  "CHANGE_PASSWORD": "पासवर्ड बदलें",
+  "ENTER_NEW_PASSWORD": "कृपया नीचे अपना नया पासवर्ड दर्ज करें।",
+  "NEW_PASSWORD": "नया पासवर्ड",
+  "ENTER_NEW_PASSWORD_PLACEHOLDER": "नया पासवर्ड दर्ज करें",
+  "REENTER_PASSWORD": "पासवर्ड पुनः दर्ज करें",
+  "REENTER_PASSWORD_PLACEHOLDER": "नया पासवर्ड पुनः दर्ज करें",
+  "CHANGE_PASSWORD_BUTTON": "पासवर्ड बदलें",
+
+
+  "VERIFY_ACCOUNT": "अपने खाते की पुष्टि करें",
+  "ENTER_VERIFICATION_CODE": "कृपया अपने ईमेल पर भेजे गए सत्यापन कोड को दर्ज करें",
+  "VERIFY_BUTTON": "पुष्टि करें",
+  "DID_NOT_RECEIVE_CODE": "यदि आपने कोड प्राप्त नहीं किया है, तो",
+  "RESEND_CODE": "कोड पुनः भेजें",
+
+
+  "PUBLISH_RIDE": "राइड प्रकाशित करें",
+  "MY_RIDES": "मेरी राइड्स",
+  "MY_TRIPS": "मेरे ट्रिप्स",
+  "LOGOUT": "लॉग आउट",
+  "CHOOSE_YOUR_RIDE": "अपनी राइड चुनें",
+  "LEAVING_FROM": "जहां से जा रहे हैं",
+  "GOING_TO": "कहां जा रहे हैं",
+  "CHOOSE_DATE": "एक तारीख चुनें",
+  "ENTER_PASSENGERS": "यात्रियों की संख्या दर्ज करें",
+  "SEARCH_BUTTON": "खोजें",
+  "AVAILABLE_TRIPS": "उपलब्ध ट्रिप्स",
+  "LOW_PRICES": "कम कीमतों पर आपकी पसंद की राइड",
+  "TRUST_TRAVEL": "जिनके साथ आप यात्रा करते हैं उन पर विश्वास करें",
+  "EASY_BOOKING": "स्क्रॉल करें, क्लिक करें, टैप करें और जाएं!",
+  "LOW_PRICES_DESC": "कोई फर्क नहीं पड़ता कि आप कहां जा रहे हैं, हमारी विस्तृत श्रृंखला से आदर्श राइड खोजें।",
+  "TRUST_TRAVEL_DESC": "हम समीक्षा, प्रोफाइल और आईडी की जांच करते हैं ताकि आप हमारी सुरक्षित मंच पर अपने राइड को आसानी से बुक कर सकें।",
+  "EASY_BOOKING_DESC": "बुकिंग करना कभी इतना आसान नहीं रहा! बस मिनटों में आपके पास के राइड की बुकिंग करें।",
+
+
+
+
+
+  "BECOME_DRIVER": "RideTribe चालक बनें और यात्रा लागत बचाएं",
+  "RIDE_SOURCE_LABEL": "सवारी स्रोत:",
+  "RIDE_SOURCE_PLACEHOLDER": "शुरुआत बिंदु दर्ज करें",
+  "RIDE_DESTINATION_LABEL": "सवारी गंतव्य:",
+  "RIDE_DESTINATION_PLACEHOLDER": "गंतव्य दर्ज करें",
+  "DATE_LABEL": "तारीख:",
+  "TIME_LABEL": "समय:",
+  "CAR_MODEL_LABEL": "कार मॉडल:",
+  "CAR_MODEL_PLACEHOLDER": "कार मॉडल दर्ज करें",
+  "CAR_NUMBER_LABEL": "कार नंबर:",
+  "CAR_NUMBER_PLACEHOLDER": "कार नंबर दर्ज करें",
+  "NUMBER_OF_PASSENGERS_LABEL": "यात्रियों की संख्या:",
+  "NUMBER_OF_PASSENGERS_PLACEHOLDER": "यात्रियों की संख्या दर्ज करें",
+  "PUBLISH_BUTTON": "सवारी प्रकाशित करें",
+  "PLAN_TITLE": "योजना",
+  "PLAN_DETAIL": "अपनी सवारी प्रकाशित करें और दूसरों को शामिल होने दें",
+  "EASY_CANCELLATION_TITLE": "आसान रद्दीकरण",
+  "EASY_CANCELLATION_DETAIL": "आसानी से अपनी प्रकाशित सवारी रद्द करें",
+  "SAVE_MONEY_TITLE": "पैसे बचाएं",
+  "SAVE_MONEY_DETAIL": "अपनी कार साझा करें और पैसे बचाएं",
+
+
+
+
+  "TRIP_HISTORY_TITLE": "यात्रा इतिहास",
+  "TRIP_ID_LABEL": "यात्रा आईडी:",
+  "CUSTOMER_NAME_LABEL": "ग्राहक का नाम:",
+  "CUSTOMER_EMAIL_LABEL": "ग्राहक का ईमेल:",
+
+
+  "RIDE_DATE_LABEL": "सवारी की तारीख:",
+  "FARE_LABEL": "भाड़ा:",
+  "DRIVER_NAME_LABEL": "चालक का नाम:",
+
+  "SEATS_OCCUPIED_LABEL": "सीटें भरी हुईं:",
+  "NO_TRIPS": "कोई यात्रा नहीं मिली।",
+
+
+
+  "MY_RIDES_TITLE": "मेरी सवारी",
+  "NO_RIDES_FOUND_TITLE": "कोई सवारी नहीं मिली",
+  "NO_RIDES_FOUND_MESSAGE": "उफ़! ऐसा लगता है कि आपने अभी तक कोई सवारी बुक नहीं की है.",
+
+
+
+  "CANCEL_BUTTON": "रद्द करें",
+
+
+
+  "BILLING_RECORD_TITLE": "बिलिंग रिकॉर्ड",
+  "NAME_LABEL": "नाम:",
+
+  "TOTAL_CHARGES_LABEL": "कुल शुल्क:",
+
+  "START_DESTINATION_LABEL": "प्रारंभ गंतव्य:",
+  "END_DESTINATION_LABEL": "अंत गंतव्य:",
+
+  "PAY_NOW_BUTTON": "अभी भुगतान करें और बुक करें",
+
+  "NO_TRIPS_AVAILABLE" : "कोई यात्रा उपलब्ध नहीं है",
+  "BOOK_NOW" : "बुकिंग करें"
+
+}

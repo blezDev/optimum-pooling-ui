@@ -17,7 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { PublishComponent } from './publish/publish.component';
 import {NgOptimizedImage} from "@angular/common";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {NgxOtpInputComponent} from "ngx-otp-input";
 import {LoadingComponent} from "./shared/loading/loading.component";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -30,8 +30,12 @@ import {
   SocialLoginModule
 } from "@abacritt/angularx-social-login";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 
-
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +68,14 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
         MatInputModule,
         SocialLoginModule,
         GoogleSigninButtonModule,
-        MatAutocompleteModule
+        MatAutocompleteModule,
+        TranslateModule.forRoot({
+          loader : {
+            provide: TranslateLoader,
+            useFactory : HttpLoaderFactory,
+            deps: [HttpClient]
+          }
+        })
     ],
   providers: [{
     provide: 'SocialAuthServiceConfig',

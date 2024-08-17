@@ -65,67 +65,80 @@
 
 
 -->
-
 <div style="background-color: aliceblue; width: 100%; height: 100%; display: flex; align-items: center">
   <img src="../../assets/pool_logo.png" style="width: 0.1px; height: 0.5px; margin-top: 45px; margin-left: 160px;">
   <div class="offer-section">
     <app-loading *ngIf="isLoading"></app-loading>
     <h2>
       <img src="../../assets/pool_logo.png" style="width: 75px; height: 75px;">
-      Become a RideTribe driver and save travel costs</h2>
+      {{ 'BECOME_DRIVER' | translate }}
+    </h2>
     <div class="offer-content">
-      <div class="offer-details" >
+      <div class="offer-details">
         <form class="ride-form" (ngSubmit)="addRide()" [formGroup]="rideForm">
           <div class="form-group">
-            <label for="ride-source">Ride Source:</label>
-            <input type="text" id="ride-source" name="rideSource" placeholder="Enter starting point" [(ngModel)]="ride.rideSource" formControlName="rideSource">
+            <label for="ride-source">{{ 'RIDE_SOURCE_LABEL' | translate }}</label>
+            <input type="text" id="ride-source" name="rideSource" placeholder="{{ 'RIDE_SOURCE_PLACEHOLDER' | translate }}" [(ngModel)]="ride.rideSource" formControlName="rideSource" [matAutocomplete]="auto1" matInput>
+            <mat-autocomplete #auto1="matAutocomplete">
+              <mat-option *ngFor="let city of filteredSourceCities | async" [value]="city">
+                {{ city }}
+              </mat-option>
+            </mat-autocomplete>
           </div>
           <div class="form-group">
-            <label for="ride-destination">Ride Destination:</label>
-            <input type="text" id="ride-destination" name="rideDestination" placeholder="Enter destination" [(ngModel)]="ride.rideDestination" formControlName="rideDestination">
+            <label for="ride-destination">{{ 'RIDE_DESTINATION_LABEL' | translate }}</label>
+            <input type="text" id="ride-destination" name="rideDestination" placeholder="{{ 'RIDE_DESTINATION_PLACEHOLDER' | translate }}" [(ngModel)]="ride.rideDestination" formControlName="rideDestination" [matAutocomplete]="auto2" matInput>
+            <mat-autocomplete #auto2="matAutocomplete">
+              <mat-option *ngFor="let city of filteredDestinationCities | async" [value]="city">
+                {{ city }}
+              </mat-option>
+            </mat-autocomplete>
           </div>
           <div class="form-group">
-            <label for="ride-date">Date:</label>
+            <label for="ride-date">{{ 'DATE_LABEL' | translate }}</label>
             <input type="date" id="ride-date" name="rideDate" [(ngModel)]="ride.rideDate" formControlName="rideDate">
           </div>
           <div class="form-group">
-            <label for="ride-time">Time:</label>
+            <label for="ride-time">{{ 'TIME_LABEL' | translate }}</label>
             <input type="time" id="ride-time" name="rideTime" [(ngModel)]="ride.rideTime" formControlName="rideTime">
           </div>
           <div class="form-group">
-            <label for="car-model">Car Model:</label>
-            <input type="text" id="car-model" name="carName" placeholder="Enter car model" [(ngModel)]="ride.carName" formControlName="carName">
+            <label for="car-model">{{ 'CAR_MODEL_LABEL' | translate }}</label>
+            <input type="text" id="car-model" name="carName" placeholder="{{ 'CAR_MODEL_PLACEHOLDER' | translate }}"  formControlName="carName" [matAutocomplete]="auto3" matInput>
+            <mat-autocomplete #auto3="matAutocomplete">
+              <mat-option *ngFor="let city of filteredCarModels | async" [value]="city.carModel">
+                {{ city.carModel }}
+              </mat-option>
+            </mat-autocomplete>
           </div>
           <div class="form-group">
-            <label for="car-number">Car Number:</label>
-            <input type="text" id="car-number" name="carNum" placeholder="Enter car number" [(ngModel)]="ride.carNum" formControlName="carNum">
+            <label for="car-number">{{ 'CAR_NUMBER_LABEL' | translate }}</label>
+            <input type="text" id="car-number" name="carNum" placeholder="{{ 'CAR_NUMBER_PLACEHOLDER' | translate }}" [(ngModel)]="ride.carNum" formControlName="carNum">
           </div>
           <div class="form-group">
-            <label for="no-of-passengers">Number of Passengers:</label>
-            <input type="number" id="no-of-passengers" name="availableSeats" placeholder="Enter number of passengers" [(ngModel)]="ride.availableSeats" min="1" max="8" formControlName="availableSeats">
+            <label for="no-of-passengers">{{ 'NUMBER_OF_PASSENGERS_LABEL' | translate }}</label>
+            <input type="number" id="no-of-passengers" name="availableSeats" placeholder="{{ 'NUMBER_OF_PASSENGERS_PLACEHOLDER' | translate }}" [(ngModel)]="ride.availableSeats" min="1" max="8" formControlName="availableSeats">
           </div>
-          <button type="submit" class="publish-btn" style="background-color: #6d2e57;">Publish a ride</button>
+          <button type="submit" class="publish-btn" style="background-color: #6d2e57;">{{ 'PUBLISH_BUTTON' | translate }}</button>
         </form>
       </div>
       <div class="offer-image">
-        <div class="cs-info-group" >
-          <div class="cs-info" >
-            <span class="cs-topper">Plan</span>
-            <span class="cs-detail">Publish your ride & Let others join</span>
+        <div class="cs-info-group">
+          <div class="cs-info">
+            <span class="cs-topper">{{ 'PLAN_TITLE' | translate }}</span>
+            <span class="cs-detail">{{ 'PLAN_DETAIL' | translate }}</span>
           </div>
           <div class="cs-info">
-            <span class="cs-topper">Easy Cancellation</span>
-            <span class="cs-detail">Cancel your published rides easily</span>
+            <span class="cs-topper">{{ 'EASY_CANCELLATION_TITLE' | translate }}</span>
+            <span class="cs-detail">{{ 'EASY_CANCELLATION_DETAIL' | translate }}</span>
           </div>
           <div class="cs-info">
-            <span class="cs-topper">Save Money</span>
-            <span class="cs-detail">Share your car & Save your money</span>
+            <span class="cs-topper">{{ 'SAVE_MONEY_TITLE' | translate }}</span>
+            <span class="cs-detail">{{ 'SAVE_MONEY_DETAIL' | translate }}</span>
           </div>
         </div>
       </div>
     </div>
-
   </div>
-
 </div>
 

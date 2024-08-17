@@ -1,29 +1,24 @@
 <form class="signup-form" [formGroup]="signup">
-  <h2>Create an Account</h2>
-  <p>Join us to start your journey</p>
-
+  <h2>{{ 'CREATE_ACCOUNT' | translate }}</h2>
+  <p>{{ 'JOIN_US' | translate }}</p>
 
   <div class="input-group" [class.error]="signup.get('firstName').invalid && signup.get('firstName').touched">
-    <input type="text" id="first-name" placeholder="First Name" formControlName="firstName" name="firstName" [class.error]="signup.get('firstName').invalid && signup.get('firstName').touched" />
+    <input type="text" id="first-name" placeholder="{{ 'FIRST_NAME' | translate }}" formControlName="firstName" name="firstName" [class.error]="signup.get('firstName').invalid && signup.get('firstName').touched" />
   </div>
   <div class="input-group">
-
-    <input type="text" id="last-name" placeholder="Last Name" formControlName="lastName" name="lastName" [class.error]="signup.get('lastName').invalid && signup.get('lastName').touched" />
+    <input type="text" id="last-name" placeholder="{{ 'LAST_NAME' | translate }}" formControlName="lastName" name="lastName" [class.error]="signup.get('lastName').invalid && signup.get('lastName').touched" />
   </div>
   <div class="input-group">
-
-    <input type="email" id="email" placeholder="xyz@gmail.com" formControlName="email" name="email" [class.error]="signup.get('email').invalid && signup.get('email').touched" />
+    <input type="email" id="email" placeholder="{{ 'EMAIL' | translate }}" formControlName="email" name="email" [class.error]="signup.get('email').invalid && signup.get('email').touched" />
   </div>
   <div class="input-group">
-
-    <input type="password" id="password" placeholder="********" formControlName="password" name="password" [class.error]="signup.get('password').invalid && signup.get('password').touched" />
+    <input type="password" id="password" placeholder="{{ 'PASSWORD' | translate }}" formControlName="password" name="password" [class.error]="signup.get('password').invalid && signup.get('password').touched" />
   </div>
   <div class="input-group">
-
-    <input type="tel"  id="phone-number" placeholder="Phone Number" formControlName="phoneNumber" name="phoneNumber"  [class.error]="signup.get('phoneNumber').invalid && signup.get('phoneNumber').touched"/>
+    <input type="tel" id="phone-number" placeholder="{{ 'PHONE_NUMBER' | translate }}" formControlName="phoneNumber" name="phoneNumber" [class.error]="signup.get('phoneNumber').invalid && signup.get('phoneNumber').touched"/>
   </div>
-  <button type="submit" (click)="onSubmit()" class="login-btn">Sign Up</button>
-  <p>Already have an account? <a (click)="toggleToLogin(UIState.Login)" style="cursor: pointer;" href="javascript:void(0);" >Login here</a></p>
+  <button type="submit" (click)="onSubmit()" class="login-btn">{{ 'SIGN_UP' | translate }}</button>
+  <p>{{ 'ALREADY_HAVE_ACCOUNT' | translate }} <a (click)="toggleToLogin(UIState.Login)" style="cursor: pointer;" href="javascript:void(0);">{{ 'LOGIN_HERE' | translate }}</a></p>
 
 </form>
 <app-loading *ngIf="isLoading"></app-loading>

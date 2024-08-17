@@ -7,11 +7,12 @@ import { ApiServiceService } from '../services/remote/api-service.service';
 import {CookieService} from "ngx-cookie-service";
 import {Success} from "../shared/ResultState";
 import {LoadingComponent} from "../shared/loading/loading.component";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-trip-history',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, LoadingComponent],
+  imports: [CommonModule, HttpClientModule, LoadingComponent, TranslateModule],
   templateUrl: './trip-history.component.html',
   styleUrls: ['./trip-history.component.css']
 })

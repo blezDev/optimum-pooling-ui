@@ -9,6 +9,7 @@ import {Success} from "../shared/ResultState";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {LoadingComponent} from "../shared/loading/loading.component";
 import {NgIf} from "@angular/common";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-billing',
@@ -16,7 +17,8 @@ import {NgIf} from "@angular/common";
   standalone: true,
   imports: [
     LoadingComponent,
-    NgIf
+    NgIf,
+    TranslateModule
   ],
   styleUrls: ['./billing.component.css']
 })

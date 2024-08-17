@@ -3,57 +3,64 @@
     <img src="assets/car_high.jpg" alt=""/>
     <!--<div class="login-banner">
     </div>-->
-    <h2>Turn your rides into trips.</h2>
-    <p>Start for free and start your journey</p>
+    <h2>{{ 'Turn your rides into trips' | translate }}</h2>
+    <p>{{ 'Start for free and start your journey' | translate }}</p>
   </div>
 
   <div class="login-right">
     <div class="logo">
       <img src="assets/pool_logo.png" alt="RideTribe Logo">
-      <span>RideTribe</span>
+      <span>{{ 'RideTribe' | translate }}</span>
     </div>
     <br>
     <br>
-<!--    <script src="https://accounts.google.com/gsi/client" async></script>-->
-   <ng-container [ngSwitch]="uiState" >
+    <!--    <script src="https://accounts.google.com/gsi/client" async></script>-->
+    <ng-container [ngSwitch]="uiState">
 
       <!-- <app-forget-password @fadeSlideInOut></app-forget-password> -->
       <div *ngSwitchCase="UIState.Login">
-        <form @fadeSlideInOut  [formGroup]="loginForm">
+        <form @fadeSlideInOut [formGroup]="loginForm">
 
-          <h2 class="divider">Login to your Account</h2>
+          <h2 class="divider">{{ 'Login to your Account' | translate }}</h2>
           <!--<p>See what's going on with your business</p>-->
-<!--          <button class="google-login" (click)="loginWithGoogle()">-->
-<!--            <img ngSrc="assets/google_png.png" width="512" height="512"-->
-<!--                 style="width: 25px; height: 25px; vertical-align: middle; margin-right: 8px; margin-bottom: 4px" alt="">-->
-<!--            Continue with Google-->
+          <!--          <button class="google-login" (click)="loginWithGoogle()">-->
+          <!--            <img ngSrc="assets/google_png.png" width="512" height="512"-->
+          <!--                 style="width: 25px; height: 25px; vertical-align: middle; margin-right: 8px; margin-bottom: 4px" alt="">-->
+          <!--            Continue with Google-->
 
-<!--          </button>-->
-          <asl-google-signin-button type='standard' size='large' text="signin_with" theme="outline" logo_alignment ="center" style="display: flex; align-items: center; justify-content: center" (click)="loginWithGoogle()">
+          <!--          </button>-->
+          <asl-google-signin-button type='standard' size='large' text="signin_with" theme="outline"
+                                    logo_alignment="center"
+                                    style="display: flex; align-items: center; justify-content: center"
+                                    (click)="loginWithGoogle()">
           </asl-google-signin-button>
-          <div class="divider">or</div>
+          <div class="divider">{{ 'or'| translate }}</div>
 
-          <div class="input-group"  [class.error]="loginForm.get('email').invalid && loginForm.get('email').touched">
-            <label for="email">Email</label>
-            <input type="email" id="email" formControlName="email" placeholder="xyz@gamil.com"    [class.error]="loginForm.get('email').invalid && loginForm.get('email').touched" />
+          <div class="input-group" [class.error]="loginForm.get('email').invalid && loginForm.get('email').touched">
+            <label for="email">{{ 'Email' | translate }}</label>
 
+            <input type="email" id="email" formControlName="email" placeholder="xyz@gamil.com"
+                   [class.error]="loginForm.get('email').invalid && loginForm.get('email').touched"/>
 
 
           </div>
-          <div class="input-group"  [class.error]="loginForm.get('password').invalid && loginForm.get('password').touched">
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="********" formControlName="password" [class.error]="loginForm.get('password').invalid && loginForm.get('password').touched" />
+          <div class="input-group"
+               [class.error]="loginForm.get('password').invalid && loginForm.get('password').touched">
+            <label for="password">{{'Password' | translate}}</label>
+            <input type="password" id="password" placeholder="********" formControlName="password"
+                   [class.error]="loginForm.get('password').invalid && loginForm.get('password').touched"/>
           </div>
           <div class="remember-forgot">
             <label style="visibility: hidden"><input type="checkbox"/> Remember me</label>
-            <a (click)="toggleMode(UIState.ForgetPassword)" href="javascript:void(0);">Forgot Password?</a>
+            <a (click)="toggleMode(UIState.ForgetPassword)" href="javascript:void(0);">{{ 'Forgot Password?'| translate }}</a>
           </div>
-          <button type="submit" (click)="onSubmit()"   class="login-btn">Login</button>
-          <p>Not Registered Yet? <a id="sign-up-button" style="cursor: pointer;" (click)="toggleMode(UIState.Signup)">Create an account</a></p>
+          <button type="submit" (click)="onSubmit()" class="login-btn">Login</button>
+          <p>{{ 'Not Registered Yet?'| translate }}<a id="sign-up-button" style="cursor: pointer;" (click)="toggleMode(UIState.Signup)">'
+            {{'Create an account' | translate}}</a></p>
         </form>
       </div>
       <div *ngSwitchCase="UIState.Signup">
-         <app-sign-up @fadeSlideInOut></app-sign-up>
+        <app-sign-up @fadeSlideInOut></app-sign-up>
       </div>
       <div *ngSwitchCase="UIState.ChangePassword">
         <app-change-password @fadeSlideInOut></app-change-password>

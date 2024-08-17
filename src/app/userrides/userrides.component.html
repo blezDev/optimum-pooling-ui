@@ -21,25 +21,25 @@
 
 
 <div class="user-rides">
-  <h1><b>My Rides</b></h1>
+  <h1><b>{{ 'MY_RIDES_TITLE' | translate }}</b></h1>
   <app-loading *ngIf="isLoading"></app-loading>
-  <div class="trip-card" *ngFor="let trip of userRides" >
-    <div class="trip-info" *ngIf="trip" >
+
+  <div class="trip-card" *ngFor="let trip of userRides">
+    <div class="trip-info" *ngIf="trip">
       <h2>{{ trip.rideDate }}</h2>
       <h3 style="margin-left: 200px;">{{ trip.carName }}</h3>
       <h3 style="margin-left: 280px;">
         <img src="assets/trip-car.png" [align]="'left'" height="50px" width="50px">
-        &nbsp;&nbsp; {{trip.rideSource}} &nbsp;&nbsp; <img src="assets/arrow.png" height="30px" width="30px"> &nbsp;&nbsp; {{trip.rideDestination}}
+        &nbsp;&nbsp; {{trip.rideSource}} &nbsp;&nbsp;
+        <img src="assets/arrow.png" height="30px" width="30px">
+        &nbsp;&nbsp; {{trip.rideDestination}}
       </h3>
-      <button (click)="onDeleteRide(trip.rideId)">Cancel</button>
+      <button (click)="onDeleteRide(trip.rideId)">{{ 'CANCEL_BUTTON' | translate }}</button>
     </div>
 
     <div *ngIf="!userRides">
-      <h1>No Rides Found</h1>
-      <p>Oops! Seems like you haven't booked any rides yet.</p>
+      <h1>{{ 'NO_RIDES_FOUND_TITLE' | translate }}</h1>
+      <p>{{ 'NO_RIDES_FOUND_MESSAGE' | translate }}</p>
     </div>
-
-
   </div>
 </div>
-

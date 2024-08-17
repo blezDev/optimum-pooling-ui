@@ -1,0 +1,133 @@
+{
+  "Turn your rides into trips": "Turn your rides into trips.",
+  "Start for free and start your journey": "Start for free and start your journey",
+  "RideTribe": "RideTribe",
+  "Login to your Account": "Login to your Account",
+  "or": "or",
+  "Email": "Email",
+  "Forgot Password?": "Forgot Password?",
+  "Not Registered Yet? ": "Not Registered Yet? ",
+  "Create an account": "Create an account",
+  "Password" : "Password",
+
+
+
+  "CREATE_ACCOUNT": "Create an Account",
+  "JOIN_US": "Join us to start your journey",
+  "FIRST_NAME": "First Name",
+  "LAST_NAME": "Last Name",
+  "EMAIL": "xyz@gmail.com",
+  "PASSWORD": "********",
+  "PHONE_NUMBER": "Phone Number",
+  "SIGN_UP": "Sign Up",
+  "LOGIN_HERE": "Login here",
+  "ALREADY_HAVE_ACCOUNT": "Already have an account?",
+
+
+  "FORGOT_PASSWORD": "Forgot Password",
+  "ENTER_EMAIL": "Please enter your email to receive a verification code.",
+
+  "ENTER_YOUR_EMAIL": "Enter your email",
+  "SEND_VERIFICATION_CODE": "Send Verification Code",
+  "CANCEL": "Cancel",
+
+  "CHANGE_PASSWORD": "Change Password",
+  "ENTER_NEW_PASSWORD": "Please enter your new password below.",
+  "NEW_PASSWORD": "New Password",
+  "ENTER_NEW_PASSWORD_PLACEHOLDER": "Enter new password",
+  "REENTER_PASSWORD": "Re-enter Password",
+  "REENTER_PASSWORD_PLACEHOLDER": "Re-enter new password",
+  "CHANGE_PASSWORD_BUTTON": "Change Password",
+
+
+  "VERIFY_ACCOUNT": "Verify Your Account",
+  "ENTER_VERIFICATION_CODE": "Please enter the verification code sent to your email",
+  "VERIFY_BUTTON": "Verify",
+  "DID_NOT_RECEIVE_CODE": "If you did not receive a code,",
+  "RESEND_CODE": "Resend Code",
+
+
+  "PUBLISH_RIDE": "Publish a ride",
+  "MY_RIDES": "My Rides",
+  "MY_TRIPS": "My Trips",
+  "LOGOUT": "Log out",
+  "CHOOSE_YOUR_RIDE": "Choose Your Ride",
+  "LEAVING_FROM": "Leaving from",
+  "GOING_TO": "Going to",
+  "CHOOSE_DATE": "Choose a date",
+  "ENTER_PASSENGERS": "Enter the number of passengers",
+  "SEARCH_BUTTON": "Search",
+  "AVAILABLE_TRIPS": "Available Trips",
+  "LOW_PRICES": "Your pick of rides at low prices",
+  "TRUST_TRAVEL": "Trust who you travel with",
+  "EASY_BOOKING": "Scroll, click, tap and go!",
+  "LOW_PRICES_DESC": "No matter where you're going, find the perfect ride from our wide range of destinations and routes at low prices.",
+  "TRUST_TRAVEL_DESC": "We check reviews, profiles, and IDs so you can book your ride at ease on our secure platform.",
+  "EASY_BOOKING_DESC": "Booking a ride has never been easier! Book a ride close to you in just minutes.",
+
+
+  "BECOME_DRIVER": "Become a RideTribe driver and save travel costs",
+  "RIDE_SOURCE_LABEL": "Ride Source:",
+  "RIDE_SOURCE_PLACEHOLDER": "Enter starting point",
+  "RIDE_DESTINATION_LABEL": "Ride Destination:",
+  "RIDE_DESTINATION_PLACEHOLDER": "Enter destination",
+  "DATE_LABEL": "Date:",
+  "TIME_LABEL": "Time:",
+  "CAR_MODEL_LABEL": "Car Model:",
+  "CAR_MODEL_PLACEHOLDER": "Enter car model",
+  "CAR_NUMBER_LABEL": "Car Number:",
+  "CAR_NUMBER_PLACEHOLDER": "Enter car number",
+  "NUMBER_OF_PASSENGERS_LABEL": "Number of Passengers:",
+  "NUMBER_OF_PASSENGERS_PLACEHOLDER": "Enter number of passengers",
+  "PUBLISH_BUTTON": "Publish a ride",
+  "PLAN_TITLE": "Plan",
+  "PLAN_DETAIL": "Publish your ride & Let others join",
+  "EASY_CANCELLATION_TITLE": "Easy Cancellation",
+  "EASY_CANCELLATION_DETAIL": "Cancel your published rides easily",
+  "SAVE_MONEY_TITLE": "Save Money",
+  "SAVE_MONEY_DETAIL": "Share your car & Save your money",
+
+
+
+  "TRIP_HISTORY_TITLE": "Trip History",
+  "TRIP_ID_LABEL": "Trip ID:",
+  "CUSTOMER_NAME_LABEL": "Customer Name:",
+  "CUSTOMER_EMAIL_LABEL": "Customer Email:",
+
+  "RIDE_DATE_LABEL": "Ride Date:",
+  "FARE_LABEL": "Fare:",
+  "DRIVER_NAME_LABEL": "Driver Name:",
+
+  "SEATS_OCCUPIED_LABEL": "Seats Occupied:",
+  "NO_TRIPS": "No trips found.",
+
+
+
+
+
+
+
+  "MY_RIDES_TITLE": "My Rides",
+  "NO_RIDES_FOUND_TITLE": "No Rides Found",
+  "NO_RIDES_FOUND_MESSAGE": "Oops! Seems like you haven't booked any rides yet.",
+
+  "CANCEL_BUTTON": "Cancel",
+
+
+
+
+  "BILLING_RECORD_TITLE": "Billing Record",
+  "NAME_LABEL": "Name:",
+
+  "TOTAL_CHARGES_LABEL": "Total Charges:",
+
+  "START_DESTINATION_LABEL": "Start Destination:",
+  "END_DESTINATION_LABEL": "End Destination:",
+
+  "PAY_NOW_BUTTON": "Pay Now & Book",
+
+
+  "NO_TRIPS_AVAILABLE" : "No Trips Available",
+  "BOOK_NOW" : "Book Now"
+
+}

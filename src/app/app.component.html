@@ -1,2 +1,13 @@
+<div class="language-switcher">
+  <button class="dropdown-toggle" (click)="toggleDropdown()">
+    {{ currentLanguage === 'en' ? 'English' : 'हिंदी' }}
+  </button>
+  <div [class.show]="showDropdown" class="dropdown-menu">
+    <ul>
+      <li (click)="switchLanguage('en')">English</li>
+      <li (click)="switchLanguage('hi')">हिंदी</li>
+    </ul>
+  </div>
+</div>
 
 <router-outlet></router-outlet>

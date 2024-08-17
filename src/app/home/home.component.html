@@ -2,109 +2,121 @@
   <div class="header-content">
     <div class="logo">
       <img src="assets/pool_logo.png" alt="RideTribe Logo">
-      <span>RideTribe</span>
+      <span>{{ 'RideTribe' | translate }}</span>
     </div>
 
     <div class="user-actions">
-      <a routerLink="/publish" class="publish-link">Publish a ride</a>
+      <a routerLink="/publish" class="publish-link">{{ 'PUBLISH_RIDE' | translate }}</a>
 
       <div class="user-menu">
         <img src="https://xsgames.co/randomusers/avatar.php?g=male" alt="User Image" class="user-icon" (click)="toggleDropdown()">
         <div *ngIf="showDropdown" class="dropdown-menu">
           <ul>
-            <li (click)="navigateToUserRides()" style="color: #6d2e57;">My Rides</li>
-            <li (click)="navigateToTripHistory()" style="color: #6d2e57;" >My Trips</li>
-            <li (click)="logout()" style="color: #6d2e57;">Log out</li>
+            <li (click)="navigateToUserRides()" style="color: #6d2e57;">{{ 'MY_RIDES' | translate }}</li>
+            <li (click)="navigateToTripHistory()" style="color: #6d2e57;">{{ 'MY_TRIPS' | translate }}</li>
+            <li (click)="logout()" style="color: #6d2e57;">{{ 'LOGOUT' | translate }}</li>
           </ul>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <div class="main-banner">
-<img src="../../assets/car-carousel.jpg" style="height: 400px; width: 800px;" />
+  <img src="../../assets/car-carousel.jpg" style="height: 400px; width: 800px;" />
 
   <div class="banner-content">
-    <h1>Choose Your Ride</h1>
-    <form class="search-bar"  [formGroup]="ride">
+    <h1>{{ 'CHOOSE_YOUR_RIDE' | translate }}</h1>
+    <form class="search-bar" [formGroup]="ride">
 
-      <input type="text" placeholder="Leaving from"  formControlName="rideSource" [matAutocomplete]="auto1"    matInput >
-        <mat-autocomplete #auto1="matAutocomplete">
-          <mat-option *ngFor="let city of filteredSourceCities | async" [value]="city">
-            {{ city }}
-          </mat-option>
-        </mat-autocomplete>
+      <input type="text" placeholder="{{ 'LEAVING_FROM' | translate }}" formControlName="rideSource" [matAutocomplete]="auto1" matInput>
+      <mat-autocomplete #auto1="matAutocomplete">
+        <mat-option *ngFor="let city of filteredSourceCities | async" [value]="city">
+          {{ city }}
+        </mat-option>
+      </mat-autocomplete>
 
-      <input type="text" placeholder="Going to" formControlName="rideDestination" [matAutocomplete]="auto2"    matInput  >
+      <input type="text" placeholder="{{ 'GOING_TO' | translate }}" formControlName="rideDestination" [matAutocomplete]="auto2" matInput>
       <mat-autocomplete #auto2="matAutocomplete">
         <mat-option *ngFor="let city of filteredDestinationCities | async" [value]="city">
           {{ city }}
         </mat-option>
       </mat-autocomplete>
-      <input matInput [matDatepicker]="picker" readonly [min]="minDate" class="custom-field" placeholder="Choose a date"  formControlName="rideDate" >
+      <input matInput [matDatepicker]="picker" readonly [min]="minDate" class="custom-field" placeholder="{{ 'CHOOSE_DATE' | translate }}" formControlName="rideDate">
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <input type="number" placeholder="Enter the number of passengers"  min="1" formControlName="availableSeats" >
-      <button (click)="onSearch()">Search</button>
+      <input type="number" placeholder="{{ 'ENTER_PASSENGERS' | translate }}" min="1" formControlName="availableSeats">
+      <button (click)="onSearch()">{{ 'SEARCH_BUTTON' | translate }}</button>
     </form>
   </div>
 </div>
 
-<!-- *ngIf="rides.length > 0" -->
-<div class="trips-section" *ngIf="rides.length > 0" >
-  <!-- <h2><strong>Date:</strong> {{ Date.now() | date: 'MMMM dd, yyyy' }}</h2> -->
-  <h1>Available Trips</h1>
+<!--<div class="trips-section" *ngIf="rides.length > 0">-->
+<!--  <h1>{{ 'AVAILABLE_TRIPS' | translate }}</h1>-->
 
- <!-- <div class="trip-card">
-    <div class="trip-info" *ngFor="let trip of rides">
-      <h3>
-        <img src="assets/trip-car.png" align="left" height="50px" width="50px">
-        {{ trip.rideSource }} &nbsp;&nbsp;
-        <img src="assets/arrow.png" height="30px" width="30px"> &nbsp;&nbsp;
-        {{ trip.rideDestination }}
-      </h3>
-      &lt;!&ndash; Uncomment if needed &ndash;&gt;
-      &lt;!&ndash; <p><strong>Departure:</strong> {{ trip.date | date }} at {{ trip.time }}</p> &ndash;&gt;
-      &lt;!&ndash; <p><strong>Available Seats:</strong> {{ trip.availableSeats }}</p> &ndash;&gt;
-      <div class="trip-actions">
-        <button (click)="billGenerate(trip)" >Book Now</button>
-      </div>
-    </div>
-    </div>-->
-  <div class="trip-card">
-    <div class="trip-info" *ngFor="let trip of rides">
-      <div class="car-image">
-        <img src="assets/trip-car.png" alt="Car Image">
-      </div>
-      <div class="trip-details">
-        <h3>{{ trip.carName }} - {{ trip.rideSource }} → {{ trip.rideDestination }}</h3>
-        <p><strong>Departure Time:</strong> {{ trip.rideTime }}</p>
-        <p><strong>Rider Name:</strong> {{ trip.r_name }}</p>
-        <p><strong>Available Seats:</strong> {{ trip.availableSeats }}</p>
-      </div>
-      <div class="trip-actions">
-        <button (click)="billGenerate(trip)">Book Now</button>
+<!--  <div class="trip-card">-->
+<!--    <div class="trip-info" *ngFor="let trip of rides">-->
+<!--      <div class="car-image">-->
+<!--        <img src="assets/trip-car.png" alt="Car Image">-->
+<!--      </div>-->
+<!--      <div class="trip-details">-->
+<!--        <h3>{{ trip.carName }} - {{ trip.rideSource }} → {{ trip.rideDestination }}</h3>-->
+<!--        <p><strong>Departure Time:</strong> {{ trip.rideTime }}</p>-->
+<!--        <p><strong>Rider Name:</strong> {{ trip.r_name }}</p>-->
+<!--        <p><strong>Available Seats:</strong> {{ trip.availableSeats }}</p>-->
+<!--      </div>-->
+<!--      <div class="trip-actions">-->
+<!--        <button (click)="billGenerate(trip)">{{ 'BOOK_NOW' | translate }}</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div class="trips-section">
+  <h1>{{ 'AVAILABLE_TRIPS' | translate }}</h1>
+
+  <!-- Display the message if there are no trips -->
+  <div *ngIf="rides.length === 0" class="no-trips-message">
+    <p>{{ 'NO_TRIPS_AVAILABLE' | translate }}</p>
+  </div>
+
+  <!-- Display trip cards if trips are available -->
+  <div class="trip-cards-container" *ngIf="rides.length > 0">
+    <div class="trip-card" *ngFor="let trip of rides">
+      <div class="trip-info">
+        <div class="car-image">
+          <img src="assets/trip-car.png" alt="Car Image">
+        </div>
+        <div class="trip-details">
+          <h3>{{ trip.carName }} - {{ trip.rideSource }} → {{ trip.rideDestination }}</h3>
+          <p><strong>Departure Time:</strong> {{ trip.rideTime }}</p>
+          <p><strong>Rider Name:</strong> {{ trip.r_name }}</p>
+          <p><strong>Available Seats:</strong> {{ trip.availableSeats }}</p>
+        </div>
+        <div class="trip-actions">
+          <button (click)="billGenerate(trip)">{{ 'BOOK_NOW' | translate }}</button>
+        </div>
       </div>
     </div>
   </div>
-
 </div>
+
 <app-loading *ngIf="isLoading"></app-loading>
+
 <div *ngIf="!(rides.length > 0)" class="info-section">
   <div class="info-item">
     <img src="assets/save_money.png" alt="Low Prices">
-    <h3>Your pick of rides at low prices</h3>
-    <p>No matter where you're going, find the perfect ride from our wide range of destinations and routes at low prices.</p>
+    <h3>{{ 'LOW_PRICES' | translate }}</h3>
+    <p>{{ 'LOW_PRICES_DESC' | translate }}</p>
   </div>
   <div class="info-item">
     <img src="assets/id_card.png" alt="Trust">
-    <h3>Trust who you travel with</h3>
-    <p>We check reviews, profiles, and IDs so you can book your ride at ease on our secure platform.</p>
+    <h3>{{ 'TRUST_TRAVEL' | translate }}</h3>
+    <p>{{ 'TRUST_TRAVEL_DESC' | translate }}</p>
   </div>
   <div class="info-item">
     <img src="assets/thunder.png" alt="Easy Booking">
-    <h3>Scroll, click, tap and go!</h3>
-    <p>Booking a ride has never been easier! Book a ride close to you in just minutes.</p>
+    <h3>{{ 'EASY_BOOKING' | translate }}</h3>
+    <p>{{ 'EASY_BOOKING_DESC' | translate }}</p>
   </div>
-
 </div>

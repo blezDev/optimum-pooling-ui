@@ -1,24 +1,24 @@
 <div class="container">
-  <h2>Trip History</h2>
+  <h2>{{ 'TRIP_HISTORY_TITLE' | translate }}</h2>
 
   <div class="history-details" *ngIf="trips.length > 0; else noTrips">
     <div class="trip-record" *ngFor="let trip of trips">
-      <p><strong>Trip ID:</strong> {{ trip.trip_id || 'N/A' }}</p>
-      <p><strong>Customer Name:</strong> {{ trip.c_name || 'N/A' }}</p>
-      <p><strong>Customer Email:</strong> {{ trip.c_email || 'N/A' }}</p>
-      <p><strong>Ride Source:</strong> {{ trip.rideSource || 'N/A' }}</p>
-      <p><strong>Ride Destination:</strong> {{ trip.rideDestination || 'N/A' }}</p>
-      <p><strong>Ride Date:</strong> {{ trip.rideDate || 'N/A' }}</p>
-      <p><strong>Fare:</strong> {{ trip.fare || 'N/A' }}</p>
-      <p><strong>Driver Name:</strong> {{ trip.r_name || 'N/A' }}</p>
-      <p><strong>Car Model:</strong> {{ trip.carName || 'N/A' }}</p>
-      <p><strong>Car Number:</strong> {{ trip.carNumber || 'N/A' }}</p>
-      <p><strong>Seats Occupied:</strong> {{ trip.seatsOccupied || 'N/A' }}</p>
+      <p><strong>{{ 'TRIP_ID_LABEL' | translate }}</strong> {{ trip.trip_id || 'N/A' }}</p>
+      <p><strong>{{ 'CUSTOMER_NAME_LABEL' | translate }}</strong> {{ trip.c_name || 'N/A' }}</p>
+      <p><strong>{{ 'CUSTOMER_EMAIL_LABEL' | translate }}</strong> {{ trip.c_email || 'N/A' }}</p>
+      <p><strong>{{ 'RIDE_SOURCE_LABEL' | translate }}</strong> {{ trip.rideSource || 'N/A' }}</p>
+      <p><strong>{{ 'RIDE_DESTINATION_LABEL' | translate }}</strong> {{ trip.rideDestination || 'N/A' }}</p>
+      <p><strong>{{ 'RIDE_DATE_LABEL' | translate }}</strong> {{ trip.rideDate || 'N/A' }}</p>
+      <p><strong>{{ 'FARE_LABEL' | translate }}</strong> {{ trip.fare || 'N/A' }}</p>
+      <p><strong>{{ 'DRIVER_NAME_LABEL' | translate }}</strong> {{ trip.r_name || 'N/A' }}</p>
+      <p><strong>{{ 'CAR_MODEL_LABEL' | translate }}</strong> {{ trip.carName || 'N/A' }}</p>
+      <p><strong>{{ 'CAR_NUMBER_LABEL' | translate }}</strong> {{ trip.carNumber || 'N/A' }}</p>
+      <p><strong>{{ 'SEATS_OCCUPIED_LABEL' | translate }}</strong> {{ trip.seatsOccupied || 'N/A' }}</p>
     </div>
   </div>
 
   <ng-template #noTrips>
-    <p>No trips found.</p>
+    <p>{{ 'NO_TRIPS' | translate }}</p>
   </ng-template>
   <app-loading *ngIf="isLoading"></app-loading>
 </div>

@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { PublishComponent } from './publish/publish.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { BillingComponent } from './billing/billing.component';
-import { TripHistoryComponent } from './trip-history/trip-history.component'; 
+import { TripHistoryComponent } from './trip-history/trip-history.component';
 
 import {authGuard} from "./guards/auth.guard";
 import {reverseAuthGuard} from "./guards/reverse-auth.guard";
@@ -19,11 +19,11 @@ const routes: Routes = [
   { path: 'verify', component: VerificationComponent ,canActivate : [reverseAuthGuard]},
   { path: 'home', component: HomeComponent,canActivate : [authGuard]},
   { path: 'publish', component: PublishComponent,canActivate : [authGuard] },
-  {path : 'change-password', component : ChangePasswordComponent,canActivate : [authGuard]},
-  { path: 'trip-history', component: TripHistoryComponent,canActivate : [authGuard] }, 
-  { path: 'user-rides', component: UserridesComponent,canActivate : [authGuard] }, 
+  {path : 'change-password', component : ChangePasswordComponent,canActivate : [reverseAuthGuard]},
+  { path: 'trip-history', component: TripHistoryComponent,canActivate : [authGuard] },
+  { path: 'user-rides', component: UserridesComponent,canActivate : [authGuard] },
   {path : 'bill', component : BillingComponent,canActivate : [authGuard]},
-  
+
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

@@ -65,6 +65,7 @@ export class ForgetPasswordComponent {
 
 
       dialogRef.afterClosed().subscribe((isVerified: boolean =false) => {
+        console.log(isVerified);
         if (isVerified) {
           this.router.navigateByUrl('/change-password',{replaceUrl: true,state: { email: email }});
         } else {
