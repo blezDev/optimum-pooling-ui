@@ -4,6 +4,18 @@
       <img src="assets/pool_logo.png" alt="RideTribe Logo">
       <span>{{ 'RideTribe' | translate }}</span>
     </div>
+    <div  class="language-switcher">
+      <button class="dropdown-toggle" (click)="toggleDropdownLang()">
+        {{ currentLanguage === 'en' ? 'English' : 'हिंदी' }}
+      </button>
+      <div [class.show]="showDropdownLang" class="dropdown-menu-lan">
+        <ul>
+          <li (click)="switchLanguage('en')">English</li>
+          <li (click)="switchLanguage('hi')">हिंदी</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="user-actions">
       <a routerLink="/publish" class="publish-link">{{ 'PUBLISH_RIDE' | translate }}</a>

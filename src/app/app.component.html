@@ -1,4 +1,4 @@
-<div class="language-switcher">
+<div  *ngIf="showLanguageSwitcher"  class="language-switcher">
   <button class="dropdown-toggle" (click)="toggleDropdown()">
     {{ currentLanguage === 'en' ? 'English' : 'हिंदी' }}
   </button>

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CookieService} from "ngx-cookie-service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Ride} from '../Model/Ride';
 import {RideSearch} from '../Model/RideSearch';
 import {RidesearchService} from '../services/ridesearch/ridesearch.service';
@@ -21,6 +21,7 @@ import {BillingComponent} from "../billing/billing.component";
 import {auto} from "@popperjs/core";
 import {map, Observable, startWith} from "rxjs";
 import {Cities} from "./Cities";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-home',
@@ -30,12 +31,19 @@ import {Cities} from "./Cities";
 export class HomeComponent implements OnInit {
   minDate = new Date();  // Ensures the date picker defaults to today's date or later
   passengerCount: string = "";
+  showDropdownLang: boolean = false;
+  toggleDropdownLang(): void {
+    this.showDropdownLang = !this.showDropdownLang;
+  }
 
+  currentLanguage: string = 'en'; // Default to 'en' initially
   constructor(private cookieService: CookieService,
               private router: Router,
               private rideSearchService: RidesearchService,
               private socialAuthService: SocialAuthService,
               private snackBar: MatSnackBar,
+              private route: ActivatedRoute,
+              private translate: TranslateService,
               private apiService: ApiServiceService,
               public dialog: MatDialog,
               private cookies: CookieService,
@@ -44,9 +52,24 @@ export class HomeComponent implements OnInit {
     const today = new Date();
     this.minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
     this.dateAdapter.setLocale('en-GB');
+
+    this.translate.setDefaultLang('en');
+    const cookieLanguage = this.getCookies('language');
+    this.currentLanguage = (cookieLanguage === 'en' || cookieLanguage === 'hi') ? cookieLanguage : 'en';
+    this.translate.use(this.currentLanguage);
   }
 
   isLoading: boolean = false;
+
+  switchLanguage(language: string): void {
+    if (language === 'en' || language === 'hi') {
+      this.setCookies('language', language);
+      this.translate.use(language);
+      this.currentLanguage = language;
+    }
+    this.showDropdownLang = false; // Close dropdown after selection
+  }
+
 
   setCookies(key: string, value: string) {
     this.cookies.set(key, value);
