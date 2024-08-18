@@ -14,7 +14,11 @@
   <div class="input-group">
     <input type="password" id="password" placeholder="{{ 'PASSWORD' | translate }}" formControlName="password" name="password" [class.error]="signup.get('password').invalid && signup.get('password').touched" />
   </div>
-  <div class="input-group">
+  <div class="input-group phone-input-group">
+    <span class="flag-and-code">
+      <img src="https://i.imgur.com/Isll8tE.png" alt="India Flag" class="flag-icon"/>
+      <span class="country-code">+91</span>
+    </span>
     <input type="tel" id="phone-number" placeholder="{{ 'PHONE_NUMBER' | translate }}" formControlName="phoneNumber" name="phoneNumber" [class.error]="signup.get('phoneNumber').invalid && signup.get('phoneNumber').touched"/>
   </div>
   <button type="submit" (click)="onSubmit()" class="login-btn">{{ 'SIGN_UP' | translate }}</button>
